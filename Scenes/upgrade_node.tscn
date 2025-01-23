@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb4v1kmtrtec4"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade_node.gd" id="1_d2ju3"]
+[ext_resource type="Texture2D" uid="uid://bk8is3p1h4kjn" path="res://Assets/Sprites/rest_upgrades/rest_upgrade_enable.png" id="2_3ne3v"]
+[ext_resource type="Texture2D" uid="uid://cqlxf3ddlwsmh" path="res://Assets/Sprites/rest_upgrades/rest_upgrad_disable.png" id="2_c4mnb"]
+[ext_resource type="Texture2D" uid="uid://bofpnpimik0fs" path="res://Assets/Sprites/rest_upgrades/locked_upgrad.png" id="3_335bw"]
+[ext_resource type="Texture2D" uid="uid://b2px0iodki208" path="res://Assets/Sprites/rest_upgrades/rest_upgrad_glowup.png" id="3_ypnnv"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="4_ci4vy"]
+
+[node name="UpgradeNode" type="Node2D" groups=["UpgradeNodes"]]
+position = Vector2(381, 95)
+script = ExtResource("1_d2ju3")
+unlocked_color = Color(0.960784, 1, 0.831373, 1)
+locked_color = Color(0.321569, 0.529412, 0.439216, 1)
+unlock_icon = ExtResource("2_3ne3v")
+
+[node name="glow_effect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -50.0
+offset_right = 57.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-112.52, 100)
+texture = ExtResource("3_ypnnv")
+expand_mode = 1
+
+[node name="btn_buy" type="Button" parent="."]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -31.0
+offset_right = 41.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(39, 35)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+icon = ExtResource("2_c4mnb")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="upgrade_icon" type="TextureRect" parent="."]
+offset_left = -27.0
+offset_top = -25.0
+offset_right = 28.0
+offset_bottom = 24.0
+mouse_filter = 2
+expand_mode = 1
+
+[node name="locked_icon" type="TextureRect" parent="."]
+offset_left = 10.0
+offset_top = -39.0
+offset_right = 44.0
+offset_bottom = -6.0
+texture = ExtResource("3_335bw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="upgrade_name" type="Label" parent="."]
+offset_left = -35.0
+offset_top = 24.0
+offset_right = 37.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.117647, 0.0784314, 0.0901961, 1)
+theme_override_colors/font_shadow_color = Color(0.960784, 1, 0.831373, 1)
+theme_override_fonts/font = ExtResource("4_ci4vy")
+theme_override_font_sizes/font_size = 16
+text = "??????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3

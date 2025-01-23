@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://be6cex1m5a5qx"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/bar.gdshader" id="1_4fd0v"]
+
+[resource]
+shader = ExtResource("1_4fd0v")
+shader_parameter/progress = null

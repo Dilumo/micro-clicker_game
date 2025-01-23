@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://7yihc1l5dgjr"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_45537"]
+[ext_resource type="PackedScene" uid="uid://c1uri5480lkbn" path="res://Scenes/popup_bar_main.tscn" id="1_f76md"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_3wmut"]
+[ext_resource type="PackedScene" uid="uid://cfcidn464b8c4" path="res://Scenes/message_ballon.tscn" id="4_86tvy"]
+[ext_resource type="PackedScene" uid="uid://c5h01x1pkgbx8" path="res://Scenes/shader_layer.tscn" id="5_rfmfm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hssns"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_45537")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hssns")
+
+[node name="bgDeafult" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.051971, 0.051971, 0.051971, 1)
+
+[node name="bg_windowError" type="ColorRect" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.666667, 1)
+
+[node name="sistemTitle" type="ColorRect" parent="Panel/bg_windowError"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.513889
+anchor_top = 0.501543
+anchor_right = 0.513889
+anchor_bottom = 0.501543
+offset_left = -104.0
+offset_top = -237.0
+offset_right = 87.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(57, 21)
+color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[node name="Label" type="Label" parent="Panel/bg_windowError/sistemTitle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0.666667, 1)
+theme_override_fonts/font = ExtResource("2_3wmut")
+theme_override_font_sizes/font_size = 37
+text = "Simulation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblErrorMessage" type="Label" parent="Panel/bg_windowError"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -480.0
+offset_right = -62.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3wmut")
+theme_override_font_sizes/font_size = 38
+text = "ERROR: Progress Bars Missing  
+Your simulation ran out of progress bars.  
+Possible fixes:  
+    - Add more bars.  
+    - Upgrade your system.  
+    - Stop overloading the simulation.  
+Error Code: 0xDEAD_BAR 
+
+"
+vertical_alignment = 1
+
+[node name="lblPressKey" type="Label" parent="Panel/bg_windowError"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -104.0
+offset_right = 178.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3wmut")
+theme_override_font_sizes/font_size = 38
+text = "Press any key to continue..."
+
+[node name="btnClickToNext" type="Button" parent="Panel/bg_windowError"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="MessageBallon" parent="Panel" instance=ExtResource("4_86tvy")]
+visible = false
+layout_mode = 1
+offset_left = -281.152
+offset_top = -164.128
+offset_right = -325.848
+offset_bottom = -244.096
+
+[node name="PopupBar" parent="Panel" instance=ExtResource("1_f76md")]
+layout_mode = 1
+anchor_left = 0.323
+anchor_top = 0.34
+anchor_right = 0.663
+anchor_bottom = 0.586
+offset_left = -0.0960083
+offset_top = -0.320007
+offset_right = 0.223999
+offset_bottom = 0.271942
+
+[node name="shader_layer" parent="Panel" instance=ExtResource("5_rfmfm")]
+layout_mode = 1
+metadata/_edit_lock_ = true

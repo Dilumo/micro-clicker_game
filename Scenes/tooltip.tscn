@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6dln4hnnsgs6"]
+
+[ext_resource type="Script" path="res://Scripts/tooltip.gd" id="1_ucskl"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_0erei"]
+[ext_resource type="Texture2D" uid="uid://uqtifxure6gs" path="res://Assets/Sprites/tooltip.png" id="2_u7kvb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hd272"]
+
+[node name="Tooltip" type="Panel" node_paths=PackedStringArray("label", "panel")]
+offset_left = 218.0
+offset_top = -87.0
+offset_right = 434.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hd272")
+script = ExtResource("1_ucskl")
+padding = Vector2(40, 20)
+label = NodePath("Panel/Label")
+panel = NodePath("Panel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="NinePatchRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u7kvb")
+region_rect = Rect2(0.0455513, 0, 259.954, 260)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 4
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.960784, 1, 0.831373, 1)
+theme_override_colors/font_shadow_color = Color(0.6, 1, 0.72, 0.12549)
+theme_override_fonts/font = ExtResource("2_0erei")
+theme_override_font_sizes/font_size = 21
+text = "aaaaaaaaaaaaaaaaaaaa 
+aaaaaaa
+aaaaaaaaaaaaa
+"

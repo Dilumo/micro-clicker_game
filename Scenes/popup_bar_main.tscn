@@ -1,0 +1,183 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1uri5480lkbn"]
+
+[ext_resource type="Script" path="res://Scripts/popup_bar_main.gd" id="1_t77pq"]
+[ext_resource type="Texture2D" uid="uid://df3d0efjgvhsd" path="res://Assets/Sprites/backgroundPainel.png" id="2_bdyo3"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="3_5jf27"]
+[ext_resource type="Texture2D" uid="uid://jwbsximbjgsh" path="res://Assets/Sprites/bgProgressBar.png" id="4_5deic"]
+[ext_resource type="Texture2D" uid="uid://ch0mce6f6gic0" path="res://Assets/Sprites/progressBar.png" id="5_ooh1t"]
+[ext_resource type="Texture2D" uid="uid://t2ykdao8aiip" path="res://Assets/Sprites/btnGenericDisable.png" id="6_1g60t"]
+[ext_resource type="Texture2D" uid="uid://cy3xoiiq2fxug" path="res://Assets/Sprites/btnCancel.png" id="7_88msy"]
+[ext_resource type="Texture2D" uid="uid://cptvc0nau627g" path="res://Assets/Sprites/btnClose.png" id="8_cnmod"]
+[ext_resource type="AudioStream" uid="uid://4x3s580ktgyn" path="res://Assets/Sounds/SFX/tec_sfx.wav" id="9_meek2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsn3v"]
+
+[node name="PopupBar" type="Control" node_paths=PackedStringArray("audio_click")]
+layout_mode = 3
+anchor_right = 0.34
+anchor_bottom = 0.219
+offset_right = 0.320007
+offset_bottom = 18.088
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t77pq")
+audio_click = NodePath("click")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="txtuBackground" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bdyo3")
+expand_mode = 1
+
+[node name="lblMessage" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -50.0
+offset_right = -9.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.14902, 0.145098, 0.133333, 1)
+theme_override_fonts/font = ExtResource("3_5jf27")
+theme_override_font_sizes/font_size = 28
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txtuBarBackgroung" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.411
+anchor_right = 1.0
+anchor_bottom = 0.653
+offset_left = 26.0
+offset_top = 0.0340042
+offset_right = -26.0
+offset_bottom = -0.0580139
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5deic")
+expand_mode = 1
+
+[node name="txtuProgressBar" type="TextureRect" parent="Panel/txtuBarBackgroung"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.486
+anchor_right = 0.035
+anchor_bottom = 0.5
+offset_left = 0.1
+offset_top = -7.7732
+offset_right = 317.1
+offset_bottom = 6.686
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ooh1t")
+expand_mode = 1
+
+[node name="btnClick" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hsn3v")
+flat = true
+
+[node name="btnCancel" type="Button" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.536
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.112
+offset_top = -43.0
+offset_right = -83.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("7_88msy")
+flat = true
+expand_icon = true
+
+[node name="btnDone" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.332
+anchor_top = 1.0
+anchor_right = 0.666
+anchor_bottom = 1.0
+offset_left = -0.144012
+offset_top = -54.0
+offset_right = -0.071991
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("6_1g60t")
+flat = true
+expand_icon = true
+
+[node name="lblButton" type="Label" parent="Panel/btnDone"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109
+anchor_top = 0.301
+anchor_right = 0.902
+anchor_bottom = 0.705
+offset_left = 1.721
+offset_top = -9.846
+offset_right = 1.76499
+offset_bottom = 4.57
+theme_override_colors/font_color = Color(0.643137, 0.639216, 0.623529, 1)
+theme_override_fonts/font = ExtResource("3_5jf27")
+theme_override_font_sizes/font_size = 28
+text = "Done"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="btnClose" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = 26.0
+grow_horizontal = 0
+icon = ExtResource("8_cnmod")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 200.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("3_5jf27")
+text = "Loading game"
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_meek2")

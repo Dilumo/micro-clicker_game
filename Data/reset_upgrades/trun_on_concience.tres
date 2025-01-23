@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ResetUpgradeData" load_steps=3 format=3 uid="uid://gqk8xewl0vnd"]
+
+[ext_resource type="Texture2D" uid="uid://cnphy7rxp0u2" path="res://Assets/Sprites/rest_upgrades/upgrades/turn_on_conscience.png" id="1_j0xg8"]
+[ext_resource type="Script" path="res://Scripts/reset_upgrade_data.gd" id="2_wpwgb"]
+
+[resource]
+script = ExtResource("2_wpwgb")
+name = "Turn on concience"
+cost = 1
+icon = ExtResource("1_j0xg8")
+prerequisites = Array[ExtResource("2_wpwgb")]([])
+effects = Array[Dictionary]([{
+"type": "permanent_main_bar_speed",
+"value": "2"
+}, {
+"type": "permanent_main_bar_points",
+"value": "10"
+}])

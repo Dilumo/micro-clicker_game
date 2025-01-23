@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=3 uid="uid://6meolr3v6sn4"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_tree.gd" id="1_00veg"]
+[ext_resource type="Script" path="res://Scripts/reset_upgrad_scene.gd" id="1_vinqa"]
+[ext_resource type="Texture2D" uid="uid://dpbcaapnbxpu7" path="res://Assets/Sprites/background_02.png" id="2_i334i"]
+[ext_resource type="PackedScene" uid="uid://cb4v1kmtrtec4" path="res://Scenes/upgrade_node.tscn" id="3_0xduo"]
+[ext_resource type="Resource" uid="uid://cr8cmvyp7ftj6" path="res://Data/reset_upgrades/you_are_boss.tres" id="4_grvdm"]
+[ext_resource type="Resource" uid="uid://gqk8xewl0vnd" path="res://Data/reset_upgrades/trun_on_concience.tres" id="4_ot48j"]
+[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/4.tres" id="5_wetyw"]
+[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/3.tres" id="6_8ui6k"]
+[ext_resource type="Resource" uid="uid://bqt25xvhwypvo" path="res://Data/reset_upgrades/1.tres" id="7_xx13a"]
+[ext_resource type="Resource" uid="uid://sofvywxf1toi" path="res://Data/reset_upgrades/2.tres" id="8_wia3b"]
+[ext_resource type="PackedScene" uid="uid://c6dln4hnnsgs6" path="res://Scenes/tooltip.tscn" id="10_wmqia"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="12_s88jq"]
+[ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="13_4c3nq"]
+[ext_resource type="PackedScene" uid="uid://c5h01x1pkgbx8" path="res://Scenes/shader_layer.tscn" id="14_187rw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_am2jc"]
+
+[node name="reset_upgrad_scene" type="Control" node_paths=PackedStringArray("label_infinit_bar", "node_upgrades", "button_continue")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vinqa")
+label_infinit_bar = NodePath("Control/Panel/lbl_infinit_bars")
+node_upgrades = NodePath("UpgradeTree/Upgrades")
+button_continue = NodePath("Control/Panel/nine_back_to_button/btn_interact")
+
+[node name="UpgradeTree" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00veg")
+
+[node name="background" type="TextureRect" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i334i")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Connections" type="Control" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrades" type="GridContainer" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeNode" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(576, 141)
+upgrade_data = ExtResource("4_grvdm")
+tooltip = NodePath("../../Tooltip")
+
+[node name="UpgradeNode2" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(377, 261)
+upgrade_data = ExtResource("5_wetyw")
+tooltip = NodePath("../../Tooltip")
+
+[node name="UpgradeNode3" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(775, 261)
+upgrade_data = ExtResource("6_8ui6k")
+tooltip = NodePath("../../Tooltip")
+
+[node name="UpgradeNode4" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(377, 384)
+upgrade_data = ExtResource("7_xx13a")
+tooltip = NodePath("../../Tooltip")
+
+[node name="UpgradeNode5" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(775, 385)
+upgrade_data = ExtResource("8_wia3b")
+tooltip = NodePath("../../Tooltip")
+
+[node name="UpgradeNode6" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
+position = Vector2(576, 529)
+upgrade_data = ExtResource("4_ot48j")
+tooltip = NodePath("../../Tooltip")
+
+[node name="Tooltip" parent="UpgradeTree" instance=ExtResource("10_wmqia")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 300.0
+offset_bottom = 97.0
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 97.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_am2jc")
+
+[node name="lbl_infinit_bars" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.5
+offset_top = -78.0
+offset_right = 155.5
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.960784, 1, 0.831373, 1)
+theme_override_fonts/font = ExtResource("12_s88jq")
+theme_override_font_sizes/font_size = 28
+text = "/infinit/bar: 0"
+
+[node name="nine_back_to_button" type="NinePatchRect" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 302.0
+offset_right = 642.0
+offset_bottom = 345.0
+texture = ExtResource("13_4c3nq")
+region_rect = Rect2(1.82727, 1.24148, 162.811, 47.1172)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 20
+patch_margin_bottom = 9
+
+[node name="btn_interact" type="Button" parent="Control/Panel/nine_back_to_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.137255, 0.145098, 0.145098, 1)
+theme_override_fonts/font = ExtResource("12_s88jq")
+theme_override_font_sizes/font_size = 16
+text = "Continue boot..."
+flat = true
+
+[node name="shader_layer" parent="." instance=ExtResource("14_187rw")]
+layout_mode = 1

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwhcxvws83h7a"]
+
+[ext_resource type="PackedScene" uid="uid://c5h01x1pkgbx8" path="res://Scenes/shader_layer.tscn" id="1_2wsfx"]
+[ext_resource type="Script" path="res://Scripts/loading.gd" id="1_ecxh1"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_glek0"]
+[ext_resource type="AudioStream" uid="uid://bt830heih1c6n" path="res://Assets/Sounds/Loading/tectoran.wav" id="4_00whf"]
+[ext_resource type="AudioStream" uid="uid://ddquof8gtq6pl" path="res://Assets/Sounds/Loading/long_vrooom.wav" id="4_qe7wo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r562r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cj1pc"]
+font = ExtResource("2_glek0")
+font_size = 24
+
+[node name="Loading" type="Control" node_paths=PackedStringArray("loading_sound", "change_command_sound", "command_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ecxh1")
+loading_sound = NodePath("loading")
+change_command_sound = NodePath("change_process")
+command_label = NodePath("Panel/Commands")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r562r")
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0295066, 0.0295066, 0.0295066, 1)
+
+[node name="Commands" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 494.0
+offset_right = 1121.0
+offset_bottom = 620.0
+label_settings = SubResource("LabelSettings_cj1pc")
+
+[node name="shader_layer" parent="Panel" instance=ExtResource("1_2wsfx")]
+layout_mode = 1
+
+[node name="loading" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qe7wo")
+volume_db = 13.0
+
+[node name="change_process" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_00whf")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AutoBarData" load_steps=2 format=3 uid="uid://bl66s7pkp73hk"]
+
+[ext_resource type="Script" path="res://Scripts/resourses/autobar_data.gd" id="1_nyxrv"]
+
+[resource]
+script = ExtResource("1_nyxrv")
+bar_name = "ENTORPY"
+bar_descripiton = "Why you coThe cosmic dance between creation and chaos. Kept low, the universe remains stable; left to chance, the stars fall in a chaotic ballet."
+sub_descriptions = Array[String](["Simple: less entropy, more time to procrastinate!"])
+base_speed = 5.0
+points_per_cycle = 1
+upgrade_cost = 25
+speed_increase = 0.9
+points_increase = 5
+max_progress = 100

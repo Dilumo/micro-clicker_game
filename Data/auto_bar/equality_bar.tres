@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AutoBarData" load_steps=2 format=3 uid="uid://cfq2sarmwnyxw"]
+
+[ext_resource type="Script" path="res://Scripts/resourses/autobar_data.gd" id="1_aiwb8"]
+
+[resource]
+script = ExtResource("1_aiwb8")
+bar_name = "Cosmic Equality"
+bar_descripiton = "It represents balance (or lack thereof) in the universe."
+sub_descriptions = Array[String](["The fuller it is, the more uneven the cosmos becomes. Funny, isn't it?", "Universal equity is like unicorns: beautiful in theory, but never seen.", "Click... I mean, watch as the bar insists on not changing anything."])
+base_speed = 5.0
+points_per_cycle = 1
+upgrade_cost = 25
+speed_increase = 0.9
+points_increase = 5
+max_progress = 100

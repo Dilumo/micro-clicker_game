@@ -1,0 +1,289 @@
+[gd_scene load_steps=17 format=3 uid="uid://14xux7g6ni4h"]
+
+[ext_resource type="Script" path="res://Scripts/auto_bar.gd" id="1_hesmu"]
+[ext_resource type="Resource" uid="uid://cfq2sarmwnyxw" path="res://Data/auto_bar/equality_bar.tres" id="2_j2xyk"]
+[ext_resource type="Texture2D" uid="uid://bvrfp8ogdusgg" path="res://Assets/Sprites/popup/window_popup_bg.png" id="3_gvb12"]
+[ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="3_uq0of"]
+[ext_resource type="Texture2D" uid="uid://jwbsximbjgsh" path="res://Assets/Sprites/bgProgressBar.png" id="4_38f5o"]
+[ext_resource type="PackedScene" uid="uid://c6dln4hnnsgs6" path="res://Scenes/tooltip.tscn" id="5_38lca"]
+[ext_resource type="Texture2D" uid="uid://ch0mce6f6gic0" path="res://Assets/Sprites/progressBar.png" id="5_hhoqc"]
+[ext_resource type="AudioStream" uid="uid://dopw64w1ivbhc" path="res://Assets/Sounds/SFX/tchocle_sfx.wav" id="7_baxnr"]
+[ext_resource type="Texture2D" uid="uid://b5ivjtucehil1" path="res://Assets/Sprites/popup/icon_widows.png" id="8_ubqo5"]
+[ext_resource type="LabelSettings" uid="uid://b33kwg6tjto60" path="res://Assets/Fonts/label_settings/titles.tres" id="9_qb481"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="10_m5xwr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7j2t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq7m3"]
+line_spacing = 0.0
+font = ExtResource("10_m5xwr")
+font_size = 12
+font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcyb0"]
+font = ExtResource("10_m5xwr")
+font_size = 12
+font_color = Color(0.454902, 0.823529, 0.658824, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frk2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gplk"]
+font = ExtResource("10_m5xwr")
+font_size = 12
+font_color = Color(0.129412, 0.145098, 0.109804, 1)
+
+[node name="AutoBar" type="Control" node_paths=PackedStringArray("progress_bar", "texture_bg", "upgrade_button", "title_label", "descripton_label", "subdescription_label", "illustration_texture", "cost_label", "info_label", "timer", "tooltip", "sound_spawn")]
+layout_mode = 3
+anchor_right = 0.195
+anchor_bottom = 0.046
+offset_right = 0.359985
+offset_bottom = 0.191998
+grow_horizontal = 2
+pivot_offset = Vector2(108, 1)
+size_flags_vertical = 0
+script = ExtResource("1_hesmu")
+autobar_data = ExtResource("2_j2xyk")
+progress_bar = NodePath("Panel/nine_background/popup_area/ProgressBar/txtuProgressBar")
+texture_bg = NodePath("Panel/nine_background")
+upgrade_button = NodePath("Panel/nine_background/popup_area/btnUpgrade")
+title_label = NodePath("Panel/nine_background/title")
+descripton_label = NodePath("Panel/nine_background/description")
+subdescription_label = NodePath("Panel/nine_background/sub_description")
+illustration_texture = NodePath("Panel/nine_background/popup_area/bar_illustration")
+cost_label = NodePath("Panel/nine_background/popup_area/cost_area/cost")
+info_label = NodePath("Panel/nine_background/popup_area/description_area/desription_values")
+timer = NodePath("Timer")
+tooltip = NodePath("Panel/Tooltip")
+sound_spawn = NodePath("spawn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 138.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k7j2t")
+
+[node name="nine_background" type="NinePatchRect" parent="Panel"]
+modulate = Color(0.967333, 1, 0.86, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gvb12")
+region_rect = Rect2(0, 0, 156, 156)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="window_icon" type="TextureRect" parent="Panel/nine_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026178
+anchor_top = 0.0484848
+anchor_right = 0.0811518
+anchor_bottom = 0.169697
+texture = ExtResource("8_ubqo5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="Label" parent="Panel/nine_background"]
+layout_mode = 1
+offset_left = 29.0
+offset_right = 309.0
+offset_bottom = 23.0
+text = "THIS IS A POPUP"
+label_settings = ExtResource("9_qb481")
+uppercase = true
+
+[node name="description" type="Label" parent="Panel/nine_background"]
+layout_mode = 1
+offset_left = 29.0
+offset_top = 21.0
+offset_right = 309.0
+offset_bottom = 35.0
+text = "set description here!"
+label_settings = SubResource("LabelSettings_jq7m3")
+
+[node name="sub_description" type="Label" parent="Panel/nine_background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -14.0
+offset_right = 309.0
+grow_vertical = 0
+text = "set description here!"
+label_settings = SubResource("LabelSettings_jq7m3")
+
+[node name="popup_area" type="ColorRect" parent="Panel/nine_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.242
+anchor_right = 0.969
+anchor_bottom = 0.889
+offset_left = 0.046
+offset_top = 0.0419979
+offset_right = 0.0989838
+offset_bottom = 1.98899
+color = Color(0.133333, 0.145098, 0.12549, 1)
+
+[node name="bar_illustration" type="TextureRect" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="description_area" type="ColorRect" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.775
+offset_top = -47.45
+offset_right = 135.225
+offset_bottom = -35.45
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0460409, 0.0502511, 0.03111, 1)
+
+[node name="desription_values" type="Label" parent="Panel/nine_background/popup_area/description_area"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "bar/complited : 10............................bar/progress/click: 20% "
+label_settings = SubResource("LabelSettings_xcyb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 35
+clip_text = true
+
+[node name="ProgressBar" type="TextureRect" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.086
+anchor_top = 0.295
+anchor_right = 0.883
+anchor_bottom = 0.515
+offset_left = -14.8748
+offset_top = -9.91373
+offset_right = 26.3318
+offset_bottom = 1.015
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_38f5o")
+expand_mode = 1
+
+[node name="txtuProgressBar" type="TextureProgressBar" parent="Panel/nine_background/popup_area/ProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.5
+anchor_right = 0.962
+anchor_bottom = 0.5
+offset_left = -0.710999
+offset_top = -7.5
+offset_right = 1.67801
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("5_hhoqc")
+
+[node name="cost_area" type="ColorRect" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.775
+offset_top = -24.671
+offset_right = 0.224991
+offset_bottom = -6.671
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0460409, 0.0502511, 0.03111, 1)
+
+[node name="cost" type="Label" parent="Panel/nine_background/popup_area/cost_area"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "bar/cost: 100"
+label_settings = SubResource("LabelSettings_xcyb0")
+vertical_alignment = 1
+justification_flags = 35
+clip_text = true
+
+[node name="btnUpgrade" type="Button" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426296
+anchor_top = 0.803485
+anchor_right = 0.592593
+anchor_bottom = 0.970333
+offset_left = 20.7403
+offset_top = -6.30434
+offset_right = 29.7065
+offset_bottom = -3.52638
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_frk2h")
+icon = ExtResource("3_uq0of")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Label" type="Label" parent="Panel/nine_background/popup_area/btnUpgrade"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -7.0
+offset_right = -4.0
+offset_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "UPGRADE"
+label_settings = SubResource("LabelSettings_5gplk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tooltip" parent="Panel" instance=ExtResource("5_38lca")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 300.0
+offset_bottom = 97.0
+
+[node name="spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_baxnr")

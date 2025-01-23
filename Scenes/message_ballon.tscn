@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfcidn464b8c4"]
+
+[ext_resource type="Texture2D" uid="uid://ba5jyhwc4b4ro" path="res://Assets/Sprites/bg_ballonMessage.png" id="1_nt115"]
+[ext_resource type="Script" path="res://Scripts/message_ballon.gd" id="1_sbp5o"]
+[ext_resource type="Texture2D" uid="uid://wpboriidx28l" path="res://Assets/Sprites/info_icon.png" id="2_mxt5k"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="3_uekd1"]
+[ext_resource type="Texture2D" uid="uid://cnp5a6all4eal" path="res://Assets/Sprites/close_ballonMessage.png" id="4_hpgv2"]
+[ext_resource type="Texture2D" uid="uid://b4mtta1nw1w1d" path="res://Assets/Sprites/point_ballonMessagem.png" id="5_3vtk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bokoq"]
+
+[node name="MessageBallon" type="Control"]
+layout_mode = 3
+anchor_left = 0.251
+anchor_top = 0.261
+anchor_right = 0.749
+anchor_bottom = 0.602
+offset_left = -0.152008
+offset_top = -0.128006
+offset_right = -40.848
+offset_bottom = -74.096
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sbp5o")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bokoq")
+
+[node name="Ballon" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = -30.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nt115")
+
+[node name="Icon" type="TextureRect" parent="Panel/Ballon"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 27.0
+offset_right = 81.0
+offset_bottom = 89.0
+texture = ExtResource("2_mxt5k")
+expand_mode = 1
+
+[node name="lblTitle" type="Label" parent="Panel/Ballon"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 25.0
+offset_right = 155.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.0348537, 0.0378883, 0.00281162, 1)
+theme_override_fonts/font = ExtResource("3_uekd1")
+theme_override_font_sizes/font_size = 30
+text = "Title"
+
+[node name="lblMessage" type="Label" parent="Panel/Ballon"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 66.0
+offset_right = 458.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_uekd1")
+theme_override_font_sizes/font_size = 18
+text = "Text menssage is here."
+
+[node name="btnClose" type="Button" parent="Panel/Ballon"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 6.0
+offset_right = 466.0
+offset_bottom = 39.0
+icon = ExtResource("4_hpgv2")
+flat = true
+expand_icon = true
+
+[node name="PointBallon" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105
+anchor_right = 0.106
+offset_left = -13.965
+offset_top = -8.0
+offset_right = 25.502
+offset_bottom = 22.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_3vtk8")
+flip_h = true
+flip_v = true

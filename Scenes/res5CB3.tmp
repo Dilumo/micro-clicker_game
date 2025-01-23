@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://6meolr3v6sn4"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_tree.gd" id="1_00veg"]
+[ext_resource type="Texture2D" uid="uid://dpbcaapnbxpu7" path="res://Assets/Sprites/background_02.png" id="2_i334i"]
+[ext_resource type="PackedScene" uid="uid://cb4v1kmtrtec4" path="res://Scenes/upgrade_node.tscn" id="3_0xduo"]
+[ext_resource type="Resource" uid="uid://cr8cmvyp7ftj6" path="res://Data/reset_upgrades/you_are_boss.tres" id="4_grvdm"]
+[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/4.tres" id="5_wetyw"]
+[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/3.tres" id="6_8ui6k"]
+[ext_resource type="Resource" uid="uid://bqt25xvhwypvo" path="res://Data/reset_upgrades/1.tres" id="7_xx13a"]
+[ext_resource type="Resource" uid="uid://sofvywxf1toi" path="res://Data/reset_upgrades/2.tres" id="8_wia3b"]
+
+[node name="reset_upgrad_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeTree" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00veg")
+
+[node name="background" type="TextureRect" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i334i")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Connections" type="Control" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrades" type="GridContainer" parent="UpgradeTree"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeNode" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(576, 141)
+upgrade_data = ExtResource("4_grvdm")
+
+[node name="UpgradeNode2" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(377, 261)
+upgrade_data = ExtResource("5_wetyw")
+
+[node name="UpgradeNode3" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(775, 261)
+upgrade_data = ExtResource("6_8ui6k")
+
+[node name="UpgradeNode4" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(377, 384)
+upgrade_data = ExtResource("7_xx13a")
+
+[node name="UpgradeNode5" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(775, 385)
+upgrade_data = ExtResource("8_wia3b")
+
+[node name="UpgradeNode6" parent="UpgradeTree/Upgrades" instance=ExtResource("3_0xduo")]
+position = Vector2(576, 529)

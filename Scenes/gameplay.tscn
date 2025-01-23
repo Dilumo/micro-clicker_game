@@ -1,0 +1,210 @@
+[gd_scene load_steps=17 format=3 uid="uid://b3ge04g80mqff"]
+
+[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_6xbc0"]
+[ext_resource type="PackedScene" uid="uid://utbtoomda1pk" path="res://Scenes/popup_bar.tscn" id="1_afaap"]
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_wdyb1"]
+[ext_resource type="Script" path="res://Scripts/UpgradeManager.gd" id="3_d2tul"]
+[ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="4_30uu6"]
+[ext_resource type="PackedScene" uid="uid://dys6l7nqryxa6" path="res://Scenes/upgrade.tscn" id="4_vahnc"]
+[ext_resource type="Resource" uid="uid://dbxlkobdwd62c" path="res://Data/upgrades.tres" id="5_c8kff"]
+[ext_resource type="Texture2D" uid="uid://dpbcaapnbxpu7" path="res://Assets/Sprites/background_02.png" id="7_1jny6"]
+[ext_resource type="AudioStream" uid="uid://utqr4vann00c" path="res://Assets/Sounds/Music/lonely-10117.wav" id="9_qmo22"]
+[ext_resource type="PackedScene" uid="uid://c5h01x1pkgbx8" path="res://Scenes/shader_layer.tscn" id="10_a7los"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lt3bi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bkcwk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5vces"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbh3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rg5je"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bm34u"]
+
+[node name="Gameplay" type="Control" node_paths=PackedStringArray("button_reset", "audio_music")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xbc0")
+button_reset = NodePath("Main/top_bar/btn_reset")
+audio_music = NodePath("music_bg")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1jny6")
+expand_mode = 1
+
+[node name="Main" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lt3bi")
+
+[node name="left_bar" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.142
+anchor_right = 0.084
+anchor_bottom = 0.997
+offset_top = -0.0160065
+offset_right = 0.231995
+offset_bottom = -0.0560303
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bkcwk")
+
+[node name="ai_panel" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.084
+anchor_bottom = 0.144
+offset_right = 0.231995
+offset_bottom = -1.312
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5vces")
+
+[node name="top_bar" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_right = 1.0
+anchor_bottom = 0.144
+offset_left = 1.384
+offset_right = 1.0
+offset_bottom = -1.312
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tbh3p")
+
+[node name="lblProgressBarPoints" type="Label" parent="Main/top_bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_right = 0.529
+anchor_bottom = 1.0
+offset_left = 0.367981
+offset_top = 34.0
+offset_right = 0.375977
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(0.45098, 0.815686, 0.65098, 1)
+theme_override_fonts/font = ExtResource("2_wdyb1")
+theme_override_font_sizes/font_size = 39
+text = "/bars: 0"
+
+[node name="lblInfinitBarPoints" type="Label" parent="Main/top_bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.03
+anchor_top = -0.113
+anchor_right = 5.03
+anchor_bottom = 1.0
+offset_left = -4480.68
+offset_top = 29.396
+offset_right = -4258.68
+offset_bottom = -39.0
+theme_override_colors/font_color = Color(0.45098, 0.815686, 0.65098, 1)
+theme_override_fonts/font = ExtResource("2_wdyb1")
+theme_override_font_sizes/font_size = 27
+text = "/infinit/bars: 0"
+
+[node name="btn_reset" type="Button" parent="Main/top_bar"]
+layout_mode = 0
+offset_left = 940.0
+offset_top = 53.0
+offset_right = 1041.0
+offset_bottom = 90.0
+icon = ExtResource("4_30uu6")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Main/top_bar/btn_reset"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 91.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.137255, 0.145098, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_wdyb1")
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rigth_panel" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.747
+anchor_top = 0.142
+anchor_right = 1.0
+anchor_bottom = 0.995
+offset_left = -63.5441
+offset_top = -0.0160065
+offset_right = 1.0
+offset_bottom = 0.23999
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rg5je")
+script = ExtResource("3_d2tul")
+upgrade_scene = ExtResource("4_vahnc")
+upgrades_resource = ExtResource("5_c8kff")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/rigth_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/rigth_panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="main_panel" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.621
+anchor_top = 0.142
+anchor_right = 1.0
+anchor_bottom = 0.995
+offset_left = -301.392
+offset_top = -0.0160065
+offset_right = -380.0
+offset_bottom = 0.23999
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bm34u")
+
+[node name="PopupBar" parent="Main/main_panel" instance=ExtResource("1_afaap")]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.365
+offset_top = 5.0
+offset_right = 0.0
+offset_bottom = 1.155
+grow_vertical = 0
+
+[node name="AutoBarsContainer" type="VBoxContainer" parent="Main/main_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21
+anchor_top = 0.335
+anchor_right = 0.7
+anchor_bottom = 1.0
+offset_left = -75.18
+offset_top = 48.745
+offset_right = 107.4
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="shader_layer" parent="Main" instance=ExtResource("10_a7los")]
+layout_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="music_bg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_qmo22")
+volume_db = -12.67

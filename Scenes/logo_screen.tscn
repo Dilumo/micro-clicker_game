@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bda55xtsh7ygl"]
+
+[ext_resource type="Script" path="res://Scripts/logo_screen.gd" id="1_oen8s"]
+[ext_resource type="PackedScene" uid="uid://c5h01x1pkgbx8" path="res://Scenes/shader_layer.tscn" id="2_evcb7"]
+[ext_resource type="Texture2D" uid="uid://brugnq6hepvrt" path="res://Assets/Sprites/Logo/simples_logo.png" id="2_uht6r"]
+[ext_resource type="AudioStream" uid="uid://owbqkds4jb1l" path="res://Assets/Sounds/Intro/shiiiii_shi_shiiii.wav" id="4_ma6f5"]
+[ext_resource type="AudioStream" uid="uid://bpkwtsxjffqo2" path="res://Assets/Sounds/Intro/moawwwwacacac.wav" id="5_5ilke"]
+[ext_resource type="AudioStream" uid="uid://c57cwd36vayhg" path="res://Assets/Sounds/Intro/cracpak.wav" id="6_rf01e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ik77"]
+
+[node name="Logo_Screen" type="Control" node_paths=PackedStringArray("fade_in", "shader_layer", "noise_intro", "effect_intro", "end_effect_intro")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oen8s")
+fade_in = NodePath("Panel/fade_in")
+shader_layer = NodePath("Panel/shader_layer")
+noise_intro = NodePath("noise_intro")
+effect_intro = NodePath("effect_intro")
+end_effect_intro = NodePath("end_effect")
+initial_transition_speed = 490.0
+normal_transition_speed = 2.75
+normal_grain_scale = 367.0
+start_effect_sound = 0.2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ik77")
+
+[node name="logo_texture" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uht6r")
+expand_mode = 1
+
+[node name="fade_in" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.03, 0.03, 1)
+
+[node name="shader_layer" parent="Panel" instance=ExtResource("2_evcb7")]
+layout_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="noise_intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ma6f5")
+volume_db = -25.5
+pitch_scale = 1.5
+
+[node name="effect_intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5ilke")
+volume_db = 9.0
+
+[node name="end_effect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rf01e")
