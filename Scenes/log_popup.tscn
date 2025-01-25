@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpem5q0e2ii3b"]
+
+[ext_resource type="Script" path="res://Scripts/LogSystem.gd" id="1_lr8qt"]
+[ext_resource type="Texture2D" uid="uid://bvrfp8ogdusgg" path="res://Assets/Sprites/popup/window_popup_bg.png" id="1_pdx5m"]
+[ext_resource type="Texture2D" uid="uid://cptvc0nau627g" path="res://Assets/Sprites/btnClose.png" id="2_3et1l"]
+[ext_resource type="Texture2D" uid="uid://b5ivjtucehil1" path="res://Assets/Sprites/popup/icon_widows.png" id="3_eh66y"]
+[ext_resource type="LabelSettings" uid="uid://b33kwg6tjto60" path="res://Assets/Fonts/label_settings/titles.tres" id="4_8mmcy"]
+[ext_resource type="AudioStream" uid="uid://4x3s580ktgyn" path="res://Assets/Sounds/SFX/tec_sfx.wav" id="5_xdame"]
+[ext_resource type="PackedScene" uid="uid://bhsanko8ilj3x" path="res://Scenes/message.tscn" id="6_mjjwf"]
+[ext_resource type="AudioStream" uid="uid://bt830heih1c6n" path="res://Assets/Sounds/Loading/tectoran.wav" id="7_s2b1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2r1k5"]
+
+[node name="Log_popup" type="Control" node_paths=PackedStringArray("log_container", "system_song")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -629.0
+offset_bottom = -373.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lr8qt")
+log_container = NodePath("Panel/nine_background/popup_area/ScrollContainer/VBoxContainer")
+system_song = NodePath("system")
+message_scene = ExtResource("6_mjjwf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2r1k5")
+
+[node name="nine_background" type="NinePatchRect" parent="Panel"]
+self_modulate = Color(0.6724, 0.82, 0.80032, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pdx5m")
+region_rect = Rect2(0, 0, 156, 156)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="btnClose" type="Button" parent="Panel/nine_background"]
+self_modulate = Color(0.494118, 0.603922, 0.588235, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -23.0
+offset_right = -2.0
+offset_bottom = 22.0
+grow_horizontal = 0
+icon = ExtResource("2_3et1l")
+flat = true
+expand_icon = true
+
+[node name="window_icon" type="TextureRect" parent="Panel/nine_background"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 7.0
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("3_eh66y")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="title" type="Label" parent="Panel/nine_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.022
+anchor_right = 1.0
+anchor_bottom = 0.105
+offset_left = 33.0
+offset_top = 1.95
+offset_right = -39.0
+offset_bottom = 2.125
+grow_horizontal = 2
+text = "LOG"
+label_settings = ExtResource("4_8mmcy")
+uppercase = true
+
+[node name="popup_area" type="ColorRect" parent="Panel/nine_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_right = 0.969
+anchor_bottom = 1.0
+offset_left = -2.845
+offset_top = 35.0
+offset_right = 9.21301
+offset_bottom = -7.0
+color = Color(0.137255, 0.145098, 0.145098, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/nine_background/popup_area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/nine_background/popup_area/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="system" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_s2b1s")
+
+[node name="boss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xdame")
+
+[node name="warning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xdame")
