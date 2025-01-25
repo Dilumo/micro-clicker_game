@@ -21,6 +21,7 @@ global="*res://Scripts/global.gd"
 GameManagement="*res://Scripts/GameManagement.gd"
 EffectSystem="*res://Scripts/global/EffectSystem.gd"
 GlobalUpgrades="*res://Scripts/global/GlobalUpgrades.gd"
+NotificationSystem="*res://Scripts/global/NotificationSystem.gd"
 
 [display]
 

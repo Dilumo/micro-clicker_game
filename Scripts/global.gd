@@ -140,6 +140,7 @@ func save_game() -> void:
 	if file:
 		file.store_string(JSON.stringify(get_save_data()))
 		file.close()
+		NotificationSystem.notify("System", "Game saved!", "info")
 		emit_signal("game_saved")
 	else:
 		print("Falha ao salvar o jogo!")

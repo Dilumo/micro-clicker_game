@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3ge04g80mqff"]
+[gd_scene load_steps=18 format=3 uid="uid://b3ge04g80mqff"]
 
 [ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_6xbc0"]
 [ext_resource type="PackedScene" uid="uid://utbtoomda1pk" path="res://Scenes/popup_bar.tscn" id="1_afaap"]
 [ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_wdyb1"]
 [ext_resource type="Script" path="res://Scripts/UpgradeManager.gd" id="3_d2tul"]
+[ext_resource type="PackedScene" uid="uid://dpem5q0e2ii3b" path="res://Scenes/log_popup.tscn" id="3_gtyio"]
 [ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="4_30uu6"]
 [ext_resource type="PackedScene" uid="uid://dys6l7nqryxa6" path="res://Scenes/upgrade.tscn" id="4_vahnc"]
 [ext_resource type="Resource" uid="uid://dbxlkobdwd62c" path="res://Data/upgrades.tres" id="5_c8kff"]
@@ -59,10 +60,27 @@ anchors_preset = -1
 anchor_top = 0.142
 anchor_right = 0.084
 anchor_bottom = 0.997
-offset_top = -0.0160065
-offset_right = 0.231995
-offset_bottom = -0.0560303
+offset_top = 83.984
+offset_right = 300.232
+offset_bottom = -0.0559692
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bkcwk")
+
+[node name="Panel" type="Panel" parent="Main/left_bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.64
+anchor_right = 0.909
+anchor_bottom = 0.979
+offset_left = -0.0860014
+offset_top = 0.199982
+offset_right = 0.126984
+offset_bottom = -0.130005
+
+[node name="Log_popup" parent="Main/left_bar/Panel" instance=ExtResource("3_gtyio")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="ai_panel" type="Panel" parent="Main"]
 layout_mode = 1

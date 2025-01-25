@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhsanko8ilj3x"]
+
+[ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="1_un600"]
+
+[sub_resource type="Theme" id="Theme_y3gvm"]
+default_font = ExtResource("1_un600")
+
+[node name="message" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 623.0
+offset_right = -9.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_y3gvm")
+bbcode_enabled = true
+fit_content = true
