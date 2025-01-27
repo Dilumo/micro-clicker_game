@@ -70,14 +70,14 @@ func adjust_shader_speed(speed: float) -> void:
 	if shader_layer.material and shader_layer.material is ShaderMaterial:
 		shader_layer.material.set_shader_parameter("TransitionSpeed", speed)
 	else:
-		print("Material do ColorRect não encontrado ou não é um ShaderMaterial!")
+		print("ColorRect material not found or not a ShaderMaterial!")
 
 # Ajusta diretamente o grain scale no shader
 func adjust_grain_scale(scale: float) -> void:
 	if shader_layer.material and shader_layer.material is ShaderMaterial:
 		shader_layer.material.set_shader_parameter("GrainScale", scale)
 	else:
-		print("Material do ColorRect não encontrado ou não é um ShaderMaterial!")
+		print("ColorRect material not found or not a ShaderMaterial!")
 
 # Gradualmente ajusta a velocidade do shader
 func transition_shader_speed(target_speed: float, duration: float) -> void:
@@ -85,7 +85,7 @@ func transition_shader_speed(target_speed: float, duration: float) -> void:
 		var tween = create_tween()
 		tween.tween_property(self, "_shader_speed", target_speed, duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:
-		print("Material do ColorRect não encontrado ou não é um ShaderMaterial!")
+		print("ColorRect material not found or not a ShaderMaterial!")
 
 # Gradualmente ajusta o grain scale do shader
 func transition_grain_scale(target_scale: float, duration: float) -> void:
@@ -93,7 +93,7 @@ func transition_grain_scale(target_scale: float, duration: float) -> void:
 		var tween = create_tween()
 		tween.tween_property(self, "_grain_scale", target_scale, duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:
-		print("Material do ColorRect não encontrado ou não é um ShaderMaterial!")
+		print("ColorRect material not found or not a ShaderMaterial!")
 
 # Atualiza o valor do TransitionSpeed no shader
 func set_shader_speed(value: float) -> void:

@@ -55,9 +55,25 @@ func set_data(data : AutoBarData) -> void:
 	timer.wait_time = current_speed
 	timer.start()
 	
+	update_resetable_state()
 	set_ui_data()
 	y_update_subdescription()
-	
+
+func update_resetable_state():
+	# Atualiza os dados da barra no `resetable_stats`
+	if not global.resetable_stats.has("auto_bars"):
+		global.resetable_stats["auto_bars"] = {}
+
+	var updated_data = {
+		"file_path": autobar_data.file_path,
+		"bar_name": autobar_data.bar_name,
+		"base_speed": current_speed,
+		"points_per_cycle": current_points,
+		"upgrade_cost": current_cost,
+		"max_progress": autobar_data.max_progress
+	}
+	global.resetable_stats["auto_bars"][autobar_data.bar_name] = updated_data
+
 func set_ui_data() -> void:
 	title_label.text = autobar_data.bar_name
 	descripton_label.text = autobar_data.bar_descripiton
@@ -69,10 +85,15 @@ func update_relativs_infos() -> void:
 
 # Loop function to change subdescription
 func y_update_subdescription() -> void:
+	if autobar_data.sub_descriptions.size() == 0:
+		subdescription_label.text = ""
+		return
+	
 	var index = randi() % autobar_data.sub_descriptions.size()
 	subdescription_label.text = autobar_data.sub_descriptions[index]
+	
 	await get_tree().create_timer(120.0).timeout
-	y_update_subdescription() 
+	y_update_subdescription()
 
 func sound_spawn_play() ->  void:
 	sound_spawn.play()
@@ -82,6 +103,7 @@ func _on_timer_timeout():
 	current_progress = 0
 	progress_bar.value = 0
 	timer.start()
+	update_resetable_state()
 
 func _process(delta):
 	# Incrementa o progresso com base no delta
@@ -98,6 +120,7 @@ func _on_upgrade_pressed():
 
 		timer.wait_time = current_speed
 		update_relativs_infos()
+		update_resetable_state()
 
 func _on_button_hover():
 	# Exibe tooltip com informações do próximo upgrade

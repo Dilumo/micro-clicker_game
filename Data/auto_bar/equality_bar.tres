@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_aiwb8")
+file_path = "res://Data/auto_bar/equality_bar.tres"
 bar_name = "Cosmic Equality"
 bar_descripiton = "It represents balance (or lack thereof) in the universe."
 sub_descriptions = Array[String](["The fuller it is, the more uneven the cosmos becomes. Funny, isn't it?", "Universal equity is like unicorns: beautiful in theory, but never seen.", "Click... I mean, watch as the bar insists on not changing anything."])

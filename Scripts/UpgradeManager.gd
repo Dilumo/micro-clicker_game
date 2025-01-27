@@ -21,10 +21,12 @@ func _ready():
 	if upgrades_resource:
 		upgrades_data = upgrades_resource.upgrades
 	else:
-		print("Erro: Recurso de upgrades não configurado ou inválido.")
-	check_unlock_conditions()
+		NotificationSystem.notify("System", "Upgrade resource not configured or invalid!", "error")
 	
+	check_unlock_conditions()
 	update_active_upgrades()
+	restore_auto_bars()
+	
 	global.points_changed.connect(check_unlock_conditions)
 	global.clicks_changed.connect(check_unlock_conditions)
 	EffectSystem.spawn_new_bar.connect(spawn_new_bar)
@@ -65,12 +67,12 @@ func evaluate_condition(condition: String) -> bool:
 
 	var error = expression.parse(condition, variables.keys())
 	if error != OK:
-		print("Erro ao analisar a expressão: ", expression.get_error_text())
+		NotificationSystem.notify("System", "Error executing expression: " + expression.get_error_text(), "error")
 		return false
 
 	var result = expression.execute(variables.values(), self)
 	if expression.has_execute_failed():
-		print("Erro ao executar a expressão")
+		NotificationSystem.notify("System", "Error executing expression!", "error")
 		return false
 
 	return result
@@ -145,6 +147,32 @@ func show_insufficient_points_feedback(upgrade_name : String):
 func apply_effect(effect_type: String, effect_value: float, bar : Resource = null):
 	EffectSystem.apply_effect(effect_type, effect_value, bar)
 
+func restore_auto_bars():
+	# Restaura todas as barras salvas em `resetable_stats`
+	for bar_name in global.resetable_stats.get("auto_bars", {}):
+		var bar_data_dict = global.resetable_stats["auto_bars"][bar_name]
+		
+		# Carrega o recurso fixo original associado ao file_path
+		var file_path = bar_data_dict.get("file_path", null)
+		if not file_path or not FileAccess.file_exists(file_path):
+			print("File path is invalid or missing for bar: ", bar_name)
+			continue
+
+		var bar_data = load(file_path).duplicate() as AutoBarData
+		if bar_data == null:
+			print("Failed to load AutoBarData for bar: ", bar_name)
+			continue
+		
+		bar_data.bar_name = bar_data_dict.get("bar_name", "Unnamed Bar")
+		bar_data.base_speed = bar_data_dict.get("base_speed", 1.0)
+		bar_data.points_per_cycle = bar_data_dict.get("points_per_cycle", 1)
+		bar_data.upgrade_cost = bar_data_dict.get("upgrade_cost", 10)
+		bar_data.max_progress = bar_data_dict.get("max_progress", 100)
+		
+		# Chama spawn_new_bar com o objeto convertido
+		spawn_new_bar(bar_data)
+
+
 
 # Instancia uma nova barra automática
 func spawn_new_bar(data : AutoBarData):
@@ -152,4 +180,17 @@ func spawn_new_bar(data : AutoBarData):
 	auto_bars_container.add_child(auto_bar)
 	auto_bar.set_data(data)
 	auto_bar.sound_spawn_play()
+	# Salva como dicionário para evitar problemas de serialização
+	if not global.resetable_stats.has("auto_bars"):
+		global.resetable_stats["auto_bars"] = {}
+
+	global.resetable_stats["auto_bars"][data.bar_name] = {
+		"file_path" : data.file_path,
+		"bar_name": data.bar_name,
+		"base_speed": data.base_speed,
+		"points_per_cycle": data.points_per_cycle,
+		"upgrade_cost": data.upgrade_cost,
+		"max_progress": data.max_progress
+	}
+	
 	emit_signal("new_bar", auto_bar)

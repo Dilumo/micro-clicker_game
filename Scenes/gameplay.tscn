@@ -75,8 +75,8 @@ anchor_right = 1.043
 anchor_bottom = 0.979
 offset_left = 15.0
 offset_top = 0.199951
-offset_right = -0.0710449
-offset_bottom = -0.130005
+offset_right = -18.071
+offset_bottom = -0.130035
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ofkyn")
 
 [node name="Log_popup" parent="Main/left_bar/Panel" instance=ExtResource("3_gtyio")]
@@ -215,9 +215,9 @@ anchor_left = 0.21
 anchor_top = 0.335
 anchor_right = 0.7
 anchor_bottom = 1.0
-offset_left = -75.18
+offset_left = -50.18
 offset_top = 48.745
-offset_right = 107.4
+offset_right = 83.4
 grow_horizontal = 2
 grow_vertical = 0
 

@@ -61,12 +61,14 @@ metadata/_edit_lock_ = true
 
 [node name="noise_intro" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ma6f5")
-volume_db = -25.5
+volume_db = -11.0
 pitch_scale = 1.5
 
 [node name="effect_intro" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_5ilke")
-volume_db = 9.0
+volume_db = 18.5
+pitch_scale = 0.99
 
 [node name="end_effect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_rf01e")
+volume_db = 24.0

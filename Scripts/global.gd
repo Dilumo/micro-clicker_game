@@ -17,7 +17,8 @@ var resetable_stats := {
 	"points_multiplier": 1.0,
 	"speed_multiplier": 1.0,
 	"section_points_bar": 0,
-	"acquired_upgrades": {}
+	"acquired_upgrades": {},
+	"auto_bars" : {}
 }
 
 # Valores padrão para resetáveis
@@ -27,7 +28,8 @@ var default_resetable_stats := {
 	"points_multiplier": 1.0,
 	"speed_multiplier": 1.0,
 	"section_points_bar": 0,
-	"acquired_upgrades": {}
+	"acquired_upgrades": {},
+	"auto_bars" : {}
 }
 
 # Estatísticas permanentes (upgrades permanentes)
@@ -133,13 +135,20 @@ func load_save_data(data: Dictionary):
 # Salvar os dados no arquivo
 func save_game() -> void:
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	# Obtém data e hora atuais
+	var datetime = Time.get_datetime_dict_from_system()
+	var formatted_time = str(datetime.hour).lpad(2, "0") + ":" + str(datetime.minute).lpad(2, "0")
 	if file:
 		file.store_string(JSON.stringify(get_save_data()))
 		file.close()
-		NotificationSystem.notify("System", "Game saved!", "info")
+		
+		# Notifica o jogador
+		NotificationSystem.notify("System", "Game saved at " + formatted_time, "info")
+		
 		emit_signal("game_saved")
 	else:
-		print("Falha ao salvar o jogo!")
+		NotificationSystem.notify("System", "Erro on saved game at " + formatted_time, "error")
+
 
 # Carregar o jogo do arquivo
 func load_game() -> bool:
@@ -174,3 +183,4 @@ func load_game() -> bool:
 func l_save_timer() -> void:
 	await get_tree().create_timer(60 * save_timer).timeout
 	save_game()
+	l_save_timer()

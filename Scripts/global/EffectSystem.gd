@@ -15,35 +15,35 @@ func apply_effect(effect_type: String, effect_value: float, bar : Resource = nul
 		"new_bar":
 			spawn_new_bar.emit(bar)
 		_:
-			print("Unknown effect type:", effect_type)
-
+			NotificationSystem.notify("System", "Unknown effect type: " + effect_type, "error")
+			
 func get_readable_effect_name(effect_type: String) -> String:
 	match effect_type:
 		"main_bar_speed":
-			return "Velocidade Barra"
+			return "Bar Speed"
 		"main_bar_points":
-			return "Pontos Barra"
+			return "Bar Points"
 		"permanent_main_bar_speed":
-			return "Velocidade Sistema Base"
+			return "Base System Speed"
 		"permanent_main_bar_points":
-			return "Pontos Sistema Base"
+			return "Base System Points"
 		"new_bar":
-			return "Nova Barra"
+			return "New Bar"
 		_:
-			return "Efeito Desconhecido"
+			return "Unknown Effect"
 
 
 func get_readable_effect(effect_type: String) -> String:
 	match effect_type:
 		"main_bar_speed":
-			return "Aumenta a velocidade da barra principal temporariamente."
+			return "Temporarily increases the speed of the main bar."
 		"main_bar_points":
-			return "Aumenta a quantidade de pontos ganhos por clique na barra principal temporariamente."
+			return "Temporarily increases the points gained per click on the main bar."
 		"permanent_main_bar_speed":
-			return "Aumenta permanentemente a velocidade base da barra principal."
+			return "Permanently increases the base speed of the main bar."
 		"permanent_main_bar_points":
-			return "Aumenta permanentemente os pontos ganhos por clique na barra principal."
+			return "Permanently increases the points gained per click on the main bar."
 		"new_bar":
-			return "Adiciona uma nova barra para interação."
+			return "Adds a new bar for interaction."
 		_:
-			return "Efeito desconhecido."
+			return "Unknown effect."

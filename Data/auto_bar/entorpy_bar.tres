@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_nyxrv")
+file_path = "res://Data/auto_bar/entorpy_bar.tres"
 bar_name = "ENTORPY"
 bar_descripiton = "Why you coThe cosmic dance between creation and chaos. Kept low, the universe remains stable; left to chance, the stars fall in a chaotic ballet."
 sub_descriptions = Array[String](["Simple: less entropy, more time to procrastinate!"])
