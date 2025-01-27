@@ -11,9 +11,6 @@ signal upgrade_purchased
 @onready var auto_bars_container = $"../main_panel/AutoBarsContainer"
 @export var upgrade_scene: PackedScene
 
-var clicks = 0
-var points = 0
-
 @export var upgrades_resource: Resource  # Aponta para upgrades.tres
 
 var upgrades_data = []
@@ -48,7 +45,7 @@ func check_unlock_conditions():
 	# Loop pelos upgrades disponíveis
 	for upgrade in upgrades_data:
 		# Verifica se o upgrade já está ativo ou adquirido
-		if upgrade.name in global.acquired_upgrades:
+		if upgrade.name in global.resetable_stats["acquired_upgrades"]:
 			continue
 		# Avalia a condição de desbloqueio
 		if evaluate_condition(upgrade.unlock_condition):
@@ -59,7 +56,7 @@ func check_unlock_conditions():
 				add_upgrade(upgrade)  # Atualiza a interface
 
 func evaluate_condition(condition: String) -> bool:
-	var points = global.section_points_bar
+	var points = global.resetable_stats["section_points_bar"]
 	var clicks = global.clicks
 	var expression = Expression.new()
 
@@ -100,7 +97,7 @@ func purchase_upgrade(upgrade_name: String):
 		return
 
 	# Calcula o custo atual e verifica a compra
-	var level = global.acquired_upgrades.get(upgrade_name, 0)
+	var level = global.resetable_stats["acquired_upgrades"].get(upgrade_name, 0)
 	var cost = calculate_cost(upgrade, level)
 	if not can_afford(cost):
 		show_insufficient_points_feedback(upgrade_name)
@@ -113,7 +110,7 @@ func purchase_upgrade(upgrade_name: String):
 	apply_effect(upgrade.effect_type, effect, upgrade.new_bar_data)
 
 	# Atualiza estado adquirido
-	global.acquired_upgrades[upgrade_name] = level + 1
+	global.resetable_stats["acquired_upgrades"][upgrade_name] =  level + 1
 	active_upgrades.erase(upgrade)  # Remove da lista de upgrades ativos
 	remove_upgrade_from_ui(upgrade_name)  # Remove da interface
 	emit_signal("upgrade_purchased")
@@ -129,7 +126,6 @@ func calculate_effect(upgrade_data, level: int) -> float:
 
 func can_afford(cost: int) -> bool:
 	return global.points_bar >= cost
-	
 
 func find_instace_upgrade(upgrade_name: String):
 	for child in vbox_container.get_children():

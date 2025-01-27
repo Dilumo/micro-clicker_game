@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpem5q0e2ii3b"]
+[gd_scene load_steps=10 format=3 uid="uid://dso83qgwulxne"]
 
 [ext_resource type="Script" path="res://Scripts/LogSystem.gd" id="1_lr8qt"]
 [ext_resource type="Texture2D" uid="uid://bvrfp8ogdusgg" path="res://Assets/Sprites/popup/window_popup_bg.png" id="1_pdx5m"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ivjtucehil1" path="res://Assets/Sprites/popup/icon_widows.png" id="3_eh66y"]
 [ext_resource type="LabelSettings" uid="uid://b33kwg6tjto60" path="res://Assets/Fonts/label_settings/titles.tres" id="4_8mmcy"]
 [ext_resource type="AudioStream" uid="uid://4x3s580ktgyn" path="res://Assets/Sounds/SFX/tec_sfx.wav" id="5_xdame"]
-[ext_resource type="PackedScene" uid="uid://bhsanko8ilj3x" path="res://Scenes/message.tscn" id="6_mjjwf"]
+[ext_resource type="PackedScene" path="res://Scenes/message.tscn" id="6_mjjwf"]
 [ext_resource type="AudioStream" uid="uid://bt830heih1c6n" path="res://Assets/Sounds/Loading/tectoran.wav" id="7_s2b1s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2r1k5"]
@@ -105,6 +105,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
