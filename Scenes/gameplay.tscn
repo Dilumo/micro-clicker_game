@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://utbtoomda1pk" path="res://Scenes/popup_bar.tscn" id="1_afaap"]
 [ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="2_wdyb1"]
 [ext_resource type="Script" path="res://Scripts/UpgradeManager.gd" id="3_d2tul"]
-[ext_resource type="PackedScene" uid="uid://dpem5q0e2ii3b" path="res://Scenes/log_popup.tscn" id="3_gtyio"]
+[ext_resource type="PackedScene" uid="uid://dso83qgwulxne" path="res://Scenes/log_popup.tscn" id="3_gtyio"]
 [ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="4_30uu6"]
 [ext_resource type="PackedScene" uid="uid://dys6l7nqryxa6" path="res://Scenes/upgrade.tscn" id="4_vahnc"]
 [ext_resource type="Resource" uid="uid://dbxlkobdwd62c" path="res://Data/upgrades.tres" id="5_c8kff"]

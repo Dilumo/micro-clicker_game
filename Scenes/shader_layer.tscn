@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fln07"]
 shader = ExtResource("1_6c1op")
-shader_parameter/Transparency = 19.042
+shader_parameter/Transparency = 15.875
 shader_parameter/GrainScale = 367.968
 shader_parameter/TransitionSpeed = 2.753
 
