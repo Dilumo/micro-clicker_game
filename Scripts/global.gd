@@ -38,12 +38,10 @@ var permanent_upgrades := {
 
 # Progresso e resets
 var points_bar = 0
-var section_points_bar = 0
 var since_started_points_bar = 0
 var since_reset_clicks = 0
 var clicks = 0
 var reset_points = 0 # Total de pontos especiais acumulados
-var acquired_upgrades = {}  # Nome do upgrade -> nível
 
 var points_for_next_reset = 100 # Progresso necessário para o primeiro ponto especial
 var reset_progress_multiplier = 1.02 # Multiplicador que aumenta o custo dos próximos pontos especiais
@@ -54,9 +52,9 @@ var upgrade_cost_multiplier = 1.5 # Escalonamento do custo dos upgrades
 # Métodos de incremento e reset
 func increment_points(amount: int):
 	points_bar += amount
-	section_points_bar += amount
 	since_started_points_bar += amount
-	check_reset_points()
+	resetable_stats["section_points_bar"] += amount
+	check_reset_points() 
 	emit_signal("points_changed")
 
 func increment_clicks():
@@ -89,7 +87,10 @@ func reboot_resets() -> void:
 # Reset dos valores resetáveis
 func reset_temporary_stats():
 	for key in resetable_stats.keys():
-		resetable_stats[key] = default_resetable_stats[key]
+		if typeof(default_resetable_stats[key]) in [TYPE_DICTIONARY, TYPE_ARRAY]:
+			resetable_stats[key] = default_resetable_stats[key].duplicate(true)  # Deep copy
+		else:
+			resetable_stats[key] = default_resetable_stats[key]
 		
 func get_final_main_bar_speed() -> float:
 	return resetable_stats["main_bar_speed_multiplier"] * permanent_upgrades["main_bar_speed_base"]
@@ -103,7 +104,6 @@ func get_save_data() -> Dictionary:
 		"resetable_stats": resetable_stats,
 		"permanent_upgrades": permanent_upgrades,
 		"points_bar": points_bar,
-		"section_points_bar": section_points_bar,
 		"since_started_points_bar": since_started_points_bar,
 		"since_reset_clicks": since_reset_clicks,
 		"clicks": clicks,
@@ -111,7 +111,6 @@ func get_save_data() -> Dictionary:
 		"points_for_next_reset": points_for_next_reset,
 		"reset_progress_multiplier": reset_progress_multiplier,
 		"upgrade_cost_multiplier": upgrade_cost_multiplier,
-		"acquired_upgrades": acquired_upgrades,
 		"upgrades_state": GlobalUpgrades.upgrades_state  # Referência ao nó de upgrades
 	}
 
@@ -119,7 +118,6 @@ func load_save_data(data: Dictionary):
 	resetable_stats = data.get("resetable_stats", resetable_stats)
 	permanent_upgrades = data.get("permanent_upgrades", permanent_upgrades)
 	points_bar = data.get("points_bar", points_bar)
-	section_points_bar = data.get("section_points_bar",section_points_bar)
 	since_started_points_bar = data.get("since_started_points_bar", since_started_points_bar)
 	since_reset_clicks = data.get("since_reset_clicks", since_reset_clicks)
 	clicks = data.get("clicks", clicks)
@@ -127,8 +125,6 @@ func load_save_data(data: Dictionary):
 	points_for_next_reset = data.get("points_for_next_reset", points_for_next_reset)
 	reset_progress_multiplier = data.get("reset_progress_multiplier", reset_progress_multiplier)
 	upgrade_cost_multiplier = data.get("upgrade_cost_multiplier", upgrade_cost_multiplier)
-	# Purchased upgrades
-	acquired_upgrades = data.get("acquired_upgrades", {})
 	
 	# Atualizar o estado dos upgrades
 	if data.has("upgrades_state"):
