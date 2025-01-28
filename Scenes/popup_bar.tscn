@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://utbtoomda1pk"]
+[gd_scene load_steps=18 format=3 uid="uid://utbtoomda1pk"]
 
 [ext_resource type="Script" path="res://Scripts/popup_bar.gd" id="1_t77pq"]
 [ext_resource type="Material" uid="uid://be6cex1m5a5qx" path="res://Assets/Material/bar_shinny.tres" id="2_pckxj"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://4x3s580ktgyn" path="res://Assets/Sounds/SFX/tec_sfx.wav" id="8_psvv3"]
 [ext_resource type="Texture2D" uid="uid://djhocmh26oynw" path="res://Assets/Sprites/popup/universal/universalbar_back.png" id="9_4j8jc"]
 [ext_resource type="Texture2D" uid="uid://tismxqb71loi" path="res://Assets/Sprites/popup/universal/universal_bar.png" id="11_62jqn"]
+[ext_resource type="AudioStream" uid="uid://b05w2untq3uya" path="res://Assets/Sounds/SFX/pria_sfx.wav" id="13_nnhyj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15r7c"]
 
@@ -28,7 +29,7 @@ font_color = Color(0.454902, 0.823529, 0.658824, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsn3v"]
 
-[node name="PopupBar" type="Control" node_paths=PackedStringArray("bar", "progress_bar", "progress_button", "progres_brightness", "audio_click")]
+[node name="PopupBar" type="Control" node_paths=PackedStringArray("bar", "progress_bar", "progress_button", "progres_brightness", "audio_click", "audio_critical")]
 layout_mode = 3
 anchor_right = 0.31
 anchor_bottom = 0.241
@@ -42,6 +43,7 @@ progress_bar = NodePath("Panel/nine_background/popup_area/txtuBarBackgroung/txtu
 progress_button = NodePath("Panel/btnClick")
 progres_brightness = NodePath("Panel/nine_background/popup_area/txtuBarBackgroung/txtuBrightness")
 audio_click = NodePath("click")
+audio_critical = NodePath("critical")
 shader_bar = ExtResource("2_pckxj")
 
 [node name="Panel" type="Panel" parent="."]
@@ -247,3 +249,7 @@ flat = true
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_psvv3")
+
+[node name="critical" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_nnhyj")
+volume_db = 5.5

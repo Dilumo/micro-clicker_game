@@ -13,6 +13,7 @@ var current_progress: float = 0 # Progresso atual
 
 
 @export var audio_click : AudioStreamPlayer2D
+@export var audio_critical : AudioStreamPlayer2D
 @export var shader_bar : ShaderMaterial
 
 @onready var floating_number_scene = preload("res://Scenes/floating_number.tscn")
@@ -53,8 +54,10 @@ func _on_progress_button_pressed():
 		update_bar()
 		audio_click.play()
 
-func show_floating_number(value: int, position: Vector2):
+func show_floating_number(value: int, position: Vector2, critical : bool = false):
 	var floating_number = floating_number_scene.instantiate()
+	if critical:
+		floating_number.modulate = Color.FIREBRICK
 	add_child(floating_number)
 	floating_number.show_number(value, position)
 
@@ -62,12 +65,24 @@ func show_floating_number(value: int, position: Vector2):
 # Quando a barra é preenchida
 func on_bar_full():
 	current_progress = 0
-	emit_signal("bar_full", global.get_final_main_bar_points())
+	var base_points = global.get_final_main_bar_points() 
+
+	# Check for critical hit
+	var critical_hit = randf() < global.resetable_stats["critical_hit"] 
+
+	# Calculate points with critical hit
+	var points = base_points 
+	if critical_hit:
+		points *= 2
+		audio_critical.play()
+
+	# Emit signal with calculated points
+	emit_signal("bar_full", points)
 	await get_tree().create_timer(0.1).timeout
 	progress_bar.scale.x = 0
 	progres_brightness.scale.x = 0
 	# Mostrar número flutuante
-	show_floating_number(global.get_final_main_bar_points(), get_global_mouse_position())
+	show_floating_number(points, get_global_mouse_position(), critical_hit)
 
 # Evento ao pressionar o botão "Done"
 func _on_done_button_pressed():

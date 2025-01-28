@@ -12,6 +12,8 @@ func apply_effect(effect_type: String, effect_value: float, bar : Resource = nul
 			global.permanent_upgrades["main_bar_speed_base"] += effect_value
 		"permanent_main_bar_points":
 			global.permanent_upgrades["main_bar_points_base"] += int(effect_value)
+		"critical_hit":
+			global.resetable_stats["critical_hit"] = float(effect_value)
 		"new_bar":
 			spawn_new_bar.emit(bar)
 		_:

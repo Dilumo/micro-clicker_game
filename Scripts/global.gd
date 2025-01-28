@@ -17,6 +17,7 @@ var resetable_stats := {
 	"points_multiplier": 1.0,
 	"speed_multiplier": 1.0,
 	"section_points_bar": 0,
+	"critical_hit": 0.0,
 	"acquired_upgrades": {},
 	"auto_bars" : {}
 }
@@ -28,6 +29,7 @@ var default_resetable_stats := {
 	"points_multiplier": 1.0,
 	"speed_multiplier": 1.0,
 	"section_points_bar": 0,
+	"critical_hit": 0.0,
 	"acquired_upgrades": {},
 	"auto_bars" : {}
 }

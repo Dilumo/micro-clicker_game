@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UpgradesList" load_steps=9 format=3 uid="uid://dbxlkobdwd62c"]
+[gd_resource type="Resource" script_class="UpgradesList" load_steps=10 format=3 uid="uid://dbxlkobdwd62c"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradesList.gd" id="1_lblo7"]
 [ext_resource type="Script" path="res://Scripts/UpgradeData.gd" id="2_dpolm"]
@@ -32,7 +32,7 @@ unlock_condition = "points >= 30"
 
 [sub_resource type="Resource" id="Resource_4xt8b"]
 script = ExtResource("2_dpolm")
-name = "Time Bars"
+name = "Equality Bar"
 cost = 500
 base_cost = 500
 cost_growth = 1.5
@@ -46,30 +46,43 @@ new_bar_data = ExtResource("3_074b2")
 
 [sub_resource type="Resource" id="Resource_7pjpn"]
 script = ExtResource("2_dpolm")
-name = "Double Points"
-cost = 200
-base_cost = 200
+name = "Speed Boost"
+cost = 1000
+base_cost = 1000
 cost_growth = 2.0
-description = "Double points per bar completion."
-effect_type = "points"
-effect_value = 2.0
+description = "Increases bar speed by 10%."
+effect_type = "main_bar_speed_boost"
+effect_value = 1.1
 base_effect = 2.0
 effect_growth = 0.5
-unlock_condition = "points >= 50"
+unlock_condition = "clicks >= 1000"
 
 [sub_resource type="Resource" id="Resource_iixtc"]
 script = ExtResource("2_dpolm")
-name = "Rapid Clicking"
-cost = 300
-base_cost = 300
+name = "Points Boost"
+cost = 2000
+base_cost = 2000
 cost_growth = 2.0
-description = "Decrease cooldown between clicks by 30%."
-effect_type = "cooldown"
-effect_value = 0.7
-base_effect = 0.7
+description = "Increases points per bar by +20."
+effect_type = "main_bar_points"
+effect_value = 20.0
+base_effect = 20.0
 effect_growth = 0.2
-unlock_condition = "clicks >= 200"
+unlock_condition = "points >= 1200"
+
+[sub_resource type="Resource" id="Resource_yq6tc"]
+script = ExtResource("2_dpolm")
+name = "Critical Hit"
+cost = 4000
+base_cost = 4000
+cost_growth = 0.0
+description = "Increases the chance to double the points earned when filling the bar to 5%."
+effect_type = "critical_hit"
+effect_value = 0.05
+base_effect = 0.05
+effect_growth = 0.0
+unlock_condition = "clicks >= 10000"
 
 [resource]
 script = ExtResource("1_lblo7")
-upgrades = Array[ExtResource("2_dpolm")]([SubResource("Resource_rm158"), SubResource("Resource_bxsb6"), SubResource("Resource_4xt8b"), SubResource("Resource_7pjpn"), SubResource("Resource_iixtc")])
+upgrades = Array[ExtResource("2_dpolm")]([SubResource("Resource_rm158"), SubResource("Resource_bxsb6"), SubResource("Resource_4xt8b"), SubResource("Resource_7pjpn"), SubResource("Resource_iixtc"), SubResource("Resource_yq6tc")])
