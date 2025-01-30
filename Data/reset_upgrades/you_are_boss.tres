@@ -2,13 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://cnphy7rxp0u2" path="res://Assets/Sprites/rest_upgrades/upgrades/turn_on_conscience.png" id="1_doh86"]
 [ext_resource type="Script" path="res://Scripts/reset_upgrade_data.gd" id="3_6v0h7"]
-[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/3.tres" id="3_845yh"]
-[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/4.tres" id="4_ud6a3"]
+[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/no_more.tres" id="3_845yh"]
+[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/passive_income_mode.tres" id="4_ud6a3"]
 
 [resource]
 script = ExtResource("3_6v0h7")
 name = "You are boss"
-cost = 500
+description = "You've hacked the system."
+cost = 80000
 icon = ExtResource("1_doh86")
 prerequisites = Array[ExtResource("3_6v0h7")]([ExtResource("3_845yh"), ExtResource("4_ud6a3")])
-effects = Array[Dictionary]([])
+effects = Array[Dictionary]([{
+"type": "the_boss",
+"value": "1"
+}])

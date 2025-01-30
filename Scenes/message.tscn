@@ -4,6 +4,7 @@
 
 [sub_resource type="Theme" id="Theme_y3gvm"]
 default_font = ExtResource("1_un600")
+default_font_size = 14
 
 [node name="message" type="RichTextLabel"]
 anchors_preset = 15

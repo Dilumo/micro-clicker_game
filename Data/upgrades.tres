@@ -1,20 +1,22 @@
-[gd_resource type="Resource" script_class="UpgradesList" load_steps=10 format=3 uid="uid://dbxlkobdwd62c"]
+[gd_resource type="Resource" script_class="UpgradesList" load_steps=33 format=3 uid="uid://dbxlkobdwd62c"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradesList.gd" id="1_lblo7"]
 [ext_resource type="Script" path="res://Scripts/UpgradeData.gd" id="2_dpolm"]
 [ext_resource type="Resource" uid="uid://cfq2sarmwnyxw" path="res://Data/auto_bar/equality_bar.tres" id="3_074b2"]
+[ext_resource type="Resource" uid="uid://c8nu0jjg7esgs" path="res://Data/auto_bar/privilegiometer_bar.tres" id="4_yly1e"]
+[ext_resource type="Resource" uid="uid://dbdca7fikarcf" path="res://Data/auto_bar/degradation_bar.tres" id="5_vsmpa"]
 
 [sub_resource type="Resource" id="Resource_rm158"]
 script = ExtResource("2_dpolm")
-name = "Faster Loading"
+name = "Faster Clicking"
 cost = 50
 base_cost = 50
 cost_growth = 1.5
-description = "Load bars 20% faster."
+description = "Increase bar speed by 10% per click."
 effect_type = "main_bar_speed"
-effect_value = 2.0
-base_effect = 2.0
-effect_growth = 0.5
+effect_value = 10.0
+base_effect = 10.0
+effect_growth = 5.0
 unlock_condition = "clicks >= 1"
 
 [sub_resource type="Resource" id="Resource_bxsb6"]
@@ -23,20 +25,20 @@ name = "Extra Points"
 cost = 100
 base_cost = 100
 cost_growth = 1.5
-description = "Earn +5 point per bar completion."
+description = "Gain 2 extra points every time a bar is completed."
 effect_type = "main_bar_points"
-effect_value = 5.0
-base_effect = 5.0
+effect_value = 2.0
+base_effect = 2.0
 effect_growth = 0.5
-unlock_condition = "points >= 30"
+unlock_condition = "points >= 50"
 
 [sub_resource type="Resource" id="Resource_4xt8b"]
 script = ExtResource("2_dpolm")
 name = "Equality Bar"
-cost = 500
-base_cost = 500
+cost = 200
+base_cost = 200
 cost_growth = 1.5
-description = "Unlock equality bar"
+description = "Unlock equality bar that generates points over time."
 effect_type = "new_bar"
 effect_value = 1.0
 base_effect = 1.0
@@ -47,42 +49,317 @@ new_bar_data = ExtResource("3_074b2")
 [sub_resource type="Resource" id="Resource_7pjpn"]
 script = ExtResource("2_dpolm")
 name = "Speed Boost"
-cost = 1000
-base_cost = 1000
+cost = 500
+base_cost = 500
 cost_growth = 2.0
-description = "Increases bar speed by 10%."
-effect_type = "main_bar_speed_boost"
-effect_value = 1.1
-base_effect = 2.0
+description = "Boost your bar speed by 15% per click."
+effect_type = "main_bar_speed"
+effect_value = 15.0
+base_effect = 15.0
 effect_growth = 0.5
-unlock_condition = "clicks >= 1000"
+unlock_condition = "points >=  500"
 
 [sub_resource type="Resource" id="Resource_iixtc"]
 script = ExtResource("2_dpolm")
 name = "Points Boost"
-cost = 2000
-base_cost = 2000
+cost = 1000
+base_cost = 1000
 cost_growth = 2.0
 description = "Increases points per bar by +20."
 effect_type = "main_bar_points"
+effect_value = 15.0
+base_effect = 15.0
+effect_growth = 0.2
+unlock_condition = "clicks >= 500"
+
+[sub_resource type="Resource" id="Resource_x1vsn"]
+script = ExtResource("2_dpolm")
+name = "Faster Clicking II"
+cost = 1000
+base_cost = 1000
+cost_growth = 0.0
+description = "Increases the chance to double the points earned when filling the bar to 20%."
+effect_type = "main_bar_speed "
 effect_value = 20.0
 base_effect = 20.0
-effect_growth = 0.2
-unlock_condition = "points >= 1200"
+effect_growth = 0.0
+unlock_condition = "clicks >= 500"
 
 [sub_resource type="Resource" id="Resource_yq6tc"]
 script = ExtResource("2_dpolm")
-name = "Critical Hit"
-cost = 4000
-base_cost = 4000
+name = "More Rewards"
+cost = 2000
+base_cost = 2000
 cost_growth = 0.0
-description = "Increases the chance to double the points earned when filling the bar to 5%."
-effect_type = "critical_hit"
+description = "Each completed bar now gives 5 extra points."
+effect_type = "main_bar_points "
+effect_value = 5.0
+base_effect = 5.0
+effect_growth = 0.0
+unlock_condition = "points >= 2500"
+
+[sub_resource type="Resource" id="Resource_lq4ix"]
+script = ExtResource("2_dpolm")
+name = "Privilegiometer Bar"
+cost = 2500
+base_cost = 2500
+cost_growth = 0.0
+description = "Unlocks privilegiometer bar with high point potential."
+effect_type = "new_bar "
+effect_value = 0.0
+base_effect = 0.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 1000)"
+new_bar_data = ExtResource("4_yly1e")
+
+[sub_resource type="Resource" id="Resource_48t2k"]
+script = ExtResource("2_dpolm")
+name = "Super Speed"
+cost = 5000
+base_cost = 5000
+cost_growth = 0.0
+description = "Your clicks now increase bar speed by 30%."
+effect_type = "main_bar_speed "
+effect_value = 30.0
+base_effect = 30.0
+effect_growth = 0.0
+unlock_condition = "points >= 5000"
+
+[sub_resource type="Resource" id="Resource_x51d8"]
+script = ExtResource("2_dpolm")
+name = "Critical Hits "
+cost = 7500
+base_cost = 7500
+cost_growth = 0.0
+description = "Your bars have a 5% chance to double their points."
+effect_type = "critical_hit "
 effect_value = 0.05
 base_effect = 0.05
 effect_growth = 0.0
+unlock_condition = "clicks >= 2000"
+
+[sub_resource type="Resource" id="Resource_c3q7q"]
+script = ExtResource("2_dpolm")
+name = "Point Surge"
+cost = 10000
+base_cost = 10000
+cost_growth = 0.0
+description = "Earn 10 extra points per completed bar."
+effect_type = "main_bar_points "
+effect_value = 10.0
+base_effect = 10.0
+effect_growth = 0.0
+unlock_condition = "points >= 10000"
+
+[sub_resource type="Resource" id="Resource_efar6"]
+script = ExtResource("2_dpolm")
+name = "Degradation Bar Unlocked "
+cost = 15000
+base_cost = 0
+cost_growth = 0.0
+description = "Unlocks the most powerful bar yet!"
+effect_type = "new_bar "
+effect_value = 0.0
+base_effect = 0.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 5000"
+new_bar_data = ExtResource("5_vsmpa")
+
+[sub_resource type="Resource" id="Resource_vl5w5"]
+script = ExtResource("2_dpolm")
+name = "Better Payouts"
+cost = 20000
+base_cost = 20000
+cost_growth = 0.0
+description = "Every bar now grants 20 additional points."
+effect_type = "main_bar_points "
+effect_value = 20.0
+base_effect = 20.0
+effect_growth = 0.0
+unlock_condition = "points >= 25000"
+
+[sub_resource type="Resource" id="Resource_ipbdp"]
+script = ExtResource("2_dpolm")
+name = "Speed Demon"
+cost = 30000
+base_cost = 30000
+cost_growth = 0.0
+description = "Your clicks now boost speed by 40%."
+effect_type = "main_bar_speed "
+effect_value = 40.0
+base_effect = 40.0
+effect_growth = 0.0
 unlock_condition = "clicks >= 10000"
+
+[sub_resource type="Resource" id="Resource_jmul6"]
+script = ExtResource("2_dpolm")
+name = "Critical Mastery"
+cost = 50000
+base_cost = 50000
+cost_growth = 0.0
+description = "Your bars now have a 10% chance to doble points!"
+effect_type = "critical_hit "
+effect_value = 0.1
+base_effect = 0.1
+effect_growth = 0.0
+unlock_condition = "points >= 50000"
+
+[sub_resource type="Resource" id="Resource_o108n"]
+script = ExtResource("2_dpolm")
+name = "Lightning Touch"
+cost = 75000
+base_cost = 75000
+cost_growth = 0.0
+description = "Increase bar speed by 50% per click."
+effect_type = "main_bar_speed "
+effect_value = 50.0
+base_effect = 50.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 20000"
+
+[sub_resource type="Resource" id="Resource_ybonu"]
+script = ExtResource("2_dpolm")
+name = "Big Payouts"
+cost = 100000
+base_cost = 100000
+cost_growth = 0.0
+description = "Get an additional 50 points for each completed bar!"
+effect_type = "main_bar_points "
+effect_value = 50.0
+base_effect = 50.0
+effect_growth = 0.0
+unlock_condition = "points >= 100000"
+
+[sub_resource type="Resource" id="Resource_dihan"]
+script = ExtResource("2_dpolm")
+name = "Speed Overdrive"
+cost = 150000
+base_cost = 150000
+cost_growth = 0.0
+description = "Your clicks now boost bar speed by 60%."
+effect_type = "main_bar_speed "
+effect_value = 60.0
+base_effect = 60.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 50000"
+
+[sub_resource type="Resource" id="Resource_x3f6v"]
+script = ExtResource("2_dpolm")
+name = "Critical Explosion"
+cost = 250000
+base_cost = 250000
+cost_growth = 0.0
+description = "Now there's a 20% chance to earn doble points!"
+effect_type = "critical_hit "
+effect_value = 0.2
+base_effect = 0.2
+effect_growth = 0.0
+unlock_condition = "points >= 250000"
+
+[sub_resource type="Resource" id="Resource_0se73"]
+script = ExtResource("2_dpolm")
+name = "Mach Speed"
+cost = 350000
+base_cost = 350000
+cost_growth = 0.0
+description = "Clicking now boosts speed by 70%!"
+effect_type = "main_bar_speed "
+effect_value = 70.0
+base_effect = 70.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 100000"
+
+[sub_resource type="Resource" id="Resource_8fajp"]
+script = ExtResource("2_dpolm")
+name = "Jackpot Points"
+cost = 500000
+base_cost = 500000
+cost_growth = 0.0
+description = "Gain 100 extra points every time you complete a bar!"
+effect_type = "main_bar_points "
+effect_value = 100.0
+base_effect = 100.0
+effect_growth = 0.0
+unlock_condition = "points >= 500000"
+
+[sub_resource type="Resource" id="Resource_rt46e"]
+script = ExtResource("2_dpolm")
+name = "Insane Clicking"
+cost = 750000
+base_cost = 750000
+cost_growth = 0.0
+description = "Each click now boosts speed by 100%!"
+effect_type = "main_bar_speed "
+effect_value = 100.0
+base_effect = 100.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 200000"
+
+[sub_resource type="Resource" id="Resource_lxrsk"]
+script = ExtResource("2_dpolm")
+name = "Point Frenzy"
+cost = 1000000
+base_cost = 1000000
+cost_growth = 0.0
+description = "Gain 200 extra points for every bar completed!"
+effect_type = "main_bar_points "
+effect_value = 200.0
+base_effect = 200.0
+effect_growth = 0.0
+unlock_condition = "points >= 1000000"
+
+[sub_resource type="Resource" id="Resource_kpw2b"]
+script = ExtResource("2_dpolm")
+name = "Mega Crits"
+cost = 2500000
+base_cost = 2500000
+cost_growth = 0.0
+description = "You now have a 30% chance to earn double points!"
+effect_type = "critical_hit"
+effect_value = 0.3
+base_effect = 0.3
+effect_growth = 0.0
+unlock_condition = "clicks >= 500000"
+
+[sub_resource type="Resource" id="Resource_tlk3i"]
+script = ExtResource("2_dpolm")
+name = "Beyond Speed"
+cost = 5000000
+base_cost = 5000000
+cost_growth = 0.0
+description = "Each click boosts speed by 150%!"
+effect_type = "main_bar_speed "
+effect_value = 150.0
+base_effect = 150.0
+effect_growth = 0.0
+unlock_condition = "points >= 5000000"
+
+[sub_resource type="Resource" id="Resource_i3phf"]
+script = ExtResource("2_dpolm")
+name = "Final Boost"
+cost = 7500000
+base_cost = 7500000
+cost_growth = 0.0
+description = "Gain an extra 500 points for every completed bar!"
+effect_type = "main_bar_points "
+effect_value = 500.0
+base_effect = 500.0
+effect_growth = 0.0
+unlock_condition = "clicks >= 1000000"
+
+[sub_resource type="Resource" id="Resource_xdi53"]
+script = ExtResource("2_dpolm")
+name = "Ultimate Crits"
+cost = 10000000
+base_cost = 0
+cost_growth = 0.0
+description = "A massive 50% chance to get double points per bar!"
+effect_type = "critical_hit "
+effect_value = 0.5
+base_effect = 0.5
+effect_growth = 0.0
+unlock_condition = "points >= 10000000"
 
 [resource]
 script = ExtResource("1_lblo7")
-upgrades = Array[ExtResource("2_dpolm")]([SubResource("Resource_rm158"), SubResource("Resource_bxsb6"), SubResource("Resource_4xt8b"), SubResource("Resource_7pjpn"), SubResource("Resource_iixtc"), SubResource("Resource_yq6tc")])
+upgrades = Array[ExtResource("2_dpolm")]([SubResource("Resource_rm158"), SubResource("Resource_bxsb6"), SubResource("Resource_4xt8b"), SubResource("Resource_7pjpn"), SubResource("Resource_iixtc"), SubResource("Resource_x1vsn"), SubResource("Resource_yq6tc"), SubResource("Resource_lq4ix"), SubResource("Resource_48t2k"), SubResource("Resource_x51d8"), SubResource("Resource_c3q7q"), SubResource("Resource_efar6"), SubResource("Resource_vl5w5"), SubResource("Resource_ipbdp"), SubResource("Resource_jmul6"), SubResource("Resource_o108n"), SubResource("Resource_ybonu"), SubResource("Resource_dihan"), SubResource("Resource_x3f6v"), SubResource("Resource_0se73"), SubResource("Resource_8fajp"), SubResource("Resource_rt46e"), SubResource("Resource_lxrsk"), SubResource("Resource_kpw2b"), SubResource("Resource_tlk3i"), SubResource("Resource_i3phf"), SubResource("Resource_xdi53")])

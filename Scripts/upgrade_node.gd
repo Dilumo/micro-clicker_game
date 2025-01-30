@@ -6,9 +6,11 @@ class_name UpgradeNode
 @export var upgrade_data: ResetUpgradeData
 @onready var button_buy = $btn_buy as Button
 @onready var lock_icon = $locked_icon as TextureRect
-@onready var name_upgrade = $upgrade_name as Label
 @onready var glow_effect = $glow_effect as TextureRect
 @onready var upgrade_icon = $"upgrade_icon" as TextureRect
+
+@export var name_upgrade : Label
+@export var cost_upgrade : Label
 
 @export var tooltip : Control
 
@@ -27,6 +29,7 @@ func _ready() -> void:
 	# Inicializa o nó com os dados do UpgradeData
 	if upgrade_data:
 		name_upgrade.text = upgrade_data.name
+		cost_upgrade.text = str(upgrade_data.cost)
 		upgrade_icon.texture = upgrade_data.icon
 
 	is_purchased =  GlobalUpgrades.is_upgrade_purchased(upgrade_data.name)

@@ -10,6 +10,7 @@ var current_progress: float = 0 # Progresso atual
 @export var progress_bar : TextureRect
 @export var progress_button : Button
 @export var progres_brightness : TextureRect 
+@export var description_values : Label
 
 
 @export var audio_click : AudioStreamPlayer2D
@@ -26,11 +27,13 @@ func _ready():
 	original_position = bar.position
 	original_color = bar.modulate
 	reset_bar()
+	EffectSystem.main_bar_update.connect(update_description_values)
 	progress_button.pressed.connect(_on_progress_button_pressed)
 
 # Reseta a barra de progresso
 func reset_bar():
 	current_progress = 0
+	update_description_values()
 	update_bar()
 
 # Atualiza visualmente a barra de progresso
@@ -68,7 +71,7 @@ func on_bar_full():
 	var base_points = global.get_final_main_bar_points() 
 
 	# Check for critical hit
-	var critical_hit = randf() < global.resetable_stats["critical_hit"] 
+	var critical_hit = randf() < global.get_critical_hit_main_bar()
 
 	# Calculate points with critical hit
 	var points = base_points 
@@ -91,6 +94,9 @@ func _on_done_button_pressed():
 	else:
 		# Caso clique antes de carregar, funciona como botão de progresso
 		_on_progress_button_pressed()
+		
+func update_description_values():
+	description_values.text = "bar/complited : " + str(global.get_final_main_bar_points()) + "............................bar/progress/click: " + str(global.get_final_main_bar_speed()) + "%."
 
 # shinny effect
 func flash_effect():

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AutoBarData" load_steps=2 format=3 uid="uid://dbdca7fikarcf"]
+
+[ext_resource type="Script" path="res://Scripts/resourses/autobar_data.gd" id="1_7kp6s"]
+
+[resource]
+script = ExtResource("1_7kp6s")
+file_path = "res://Data/auto_bar/degradation_bar.tres"
+bar_name = "Cosmic Degradation"
+bar_descripiton = "Measures the level of destruction of the cosmos"
+sub_descriptions = Array[String](["The bar is rising faster than the global temperature! How refreshing...", "Relax, it's just a planet collapsing. No big deal!", "If this bar were a thermometer, we would have been frying a long time ago."])
+base_speed = 30.0
+points_per_cycle = 200
+upgrade_cost = 1000
+speed_increase = 2.5
+points_increase = 250
+max_progress = 100

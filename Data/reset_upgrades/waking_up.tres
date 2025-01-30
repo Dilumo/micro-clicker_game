@@ -5,14 +5,15 @@
 
 [resource]
 script = ExtResource("2_wpwgb")
-name = "Turn on concience"
-cost = 1
+name = "Waking Up"
+description = "You start seeing the bigger picture. "
+cost = 5
 icon = ExtResource("1_j0xg8")
 prerequisites = Array[ExtResource("2_wpwgb")]([])
 effects = Array[Dictionary]([{
 "type": "permanent_main_bar_speed",
-"value": "2"
+"value": "5"
 }, {
 "type": "permanent_main_bar_points",
-"value": "10"
+"value": "2"
 }])

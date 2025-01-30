@@ -37,7 +37,8 @@ var default_resetable_stats := {
 # Estatísticas permanentes (upgrades permanentes)
 var permanent_upgrades := {
 	"main_bar_speed_base": 1.0,
-	"main_bar_points_base": 0
+	"main_bar_points_base": 0,
+	"permanent_critical_hit" : 0
 }
 
 # Progresso e resets
@@ -101,6 +102,9 @@ func get_final_main_bar_speed() -> float:
 
 func get_final_main_bar_points() -> int:
 	return resetable_stats["main_bar_points_bonus"] + permanent_upgrades["main_bar_points_base"]
+	
+func get_critical_hit_main_bar() -> float:
+	return resetable_stats["critical_hit"] + permanent_upgrades["permanent_critical_hit"]
 	
 	
 func get_save_data() -> Dictionary:

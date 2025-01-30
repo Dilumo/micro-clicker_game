@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b2px0iodki208" path="res://Assets/Sprites/rest_upgrades/rest_upgrad_glowup.png" id="3_ypnnv"]
 [ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="4_ci4vy"]
 
-[node name="UpgradeNode" type="Node2D" groups=["UpgradeNodes"]]
+[node name="UpgradeNode" type="Node2D" node_paths=PackedStringArray("name_upgrade", "cost_upgrade") groups=["UpgradeNodes"]]
 position = Vector2(381, 95)
 script = ExtResource("1_d2ju3")
+name_upgrade = NodePath("ColorRect/upgrade_name")
+cost_upgrade = NodePath("ColorRect/upgrade_cost")
 unlocked_color = Color(0.960784, 1, 0.831373, 1)
 locked_color = Color(0.321569, 0.529412, 0.439216, 1)
 unlock_icon = ExtResource("2_3ne3v")
@@ -67,15 +69,34 @@ texture = ExtResource("3_335bw")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="upgrade_name" type="Label" parent="."]
-offset_left = -35.0
-offset_top = 24.0
-offset_right = 37.0
-offset_bottom = 43.0
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -59.0
+offset_top = 26.0
+offset_right = 65.0
+offset_bottom = 60.0
+color = Color(0.321569, 0.529412, 0.439216, 1)
+
+[node name="upgrade_name" type="Label" parent="ColorRect"]
+offset_right = 124.0
+offset_bottom = 17.0
 theme_override_colors/font_color = Color(0.117647, 0.0784314, 0.0901961, 1)
 theme_override_colors/font_shadow_color = Color(0.960784, 1, 0.831373, 1)
 theme_override_fonts/font = ExtResource("4_ci4vy")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
+text = "??????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="upgrade_cost" type="Label" parent="ColorRect"]
+offset_top = 17.0
+offset_right = 124.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 0.866667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ci4vy")
+theme_override_font_sizes/font_size = 14
 text = "??????????"
 horizontal_alignment = 1
 vertical_alignment = 1

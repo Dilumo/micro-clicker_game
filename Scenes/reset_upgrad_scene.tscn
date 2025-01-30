@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dpbcaapnbxpu7" path="res://Assets/Sprites/background_02.png" id="2_i334i"]
 [ext_resource type="PackedScene" uid="uid://cb4v1kmtrtec4" path="res://Scenes/upgrade_node.tscn" id="3_0xduo"]
 [ext_resource type="Resource" uid="uid://cr8cmvyp7ftj6" path="res://Data/reset_upgrades/you_are_boss.tres" id="4_grvdm"]
-[ext_resource type="Resource" uid="uid://gqk8xewl0vnd" path="res://Data/reset_upgrades/trun_on_concience.tres" id="4_ot48j"]
-[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/4.tres" id="5_wetyw"]
-[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/3.tres" id="6_8ui6k"]
-[ext_resource type="Resource" uid="uid://bqt25xvhwypvo" path="res://Data/reset_upgrades/1.tres" id="7_xx13a"]
-[ext_resource type="Resource" uid="uid://sofvywxf1toi" path="res://Data/reset_upgrades/2.tres" id="8_wia3b"]
+[ext_resource type="Resource" uid="uid://gqk8xewl0vnd" path="res://Data/reset_upgrades/waking_up.tres" id="4_ot48j"]
+[ext_resource type="Resource" uid="uid://d0qacjox4byw1" path="res://Data/reset_upgrades/passive_income_mode.tres" id="5_wetyw"]
+[ext_resource type="Resource" uid="uid://cp5rylo08tke1" path="res://Data/reset_upgrades/no_more.tres" id="6_8ui6k"]
+[ext_resource type="Resource" uid="uid://bqt25xvhwypvo" path="res://Data/reset_upgrades/pay_yourself_first.tres" id="7_xx13a"]
+[ext_resource type="Resource" uid="uid://sofvywxf1toi" path="res://Data/reset_upgrades/side_hustle_activated.tres" id="8_wia3b"]
 [ext_resource type="PackedScene" uid="uid://c6dln4hnnsgs6" path="res://Scenes/tooltip.tscn" id="10_wmqia"]
 [ext_resource type="FontFile" uid="uid://ftrtcyvfvchj" path="res://Assets/Fonts/Born2bSportyFS.otf" id="12_s88jq"]
 [ext_resource type="Texture2D" uid="uid://cq8pj1jsrcq4a" path="res://Assets/Sprites/btnGeneric.png" id="13_4c3nq"]
@@ -27,7 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_vinqa")
 label_infinit_bar = NodePath("Control/Panel/lbl_infinit_bars")
 node_upgrades = NodePath("UpgradeTree/Upgrades")
-button_continue = NodePath("Control/Panel/nine_back_to_button/btn_interact")
+button_continue = NodePath("UpgradeTree/nine_back_to_button/btn_interact")
 
 [node name="UpgradeTree" type="Control" parent="."]
 layout_mode = 1
@@ -66,34 +66,60 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UpgradeNode" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(576, 141)
+position = Vector2(576, 113)
 upgrade_data = ExtResource("4_grvdm")
 tooltip = NodePath("../../Tooltip")
 
 [node name="UpgradeNode2" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(377, 261)
+position = Vector2(377, 233)
 upgrade_data = ExtResource("5_wetyw")
 tooltip = NodePath("../../Tooltip")
 
 [node name="UpgradeNode3" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(775, 261)
+position = Vector2(775, 233)
 upgrade_data = ExtResource("6_8ui6k")
 tooltip = NodePath("../../Tooltip")
 
 [node name="UpgradeNode4" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(377, 384)
+position = Vector2(377, 356)
 upgrade_data = ExtResource("7_xx13a")
 tooltip = NodePath("../../Tooltip")
 
 [node name="UpgradeNode5" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(775, 385)
+position = Vector2(775, 357)
 upgrade_data = ExtResource("8_wia3b")
 tooltip = NodePath("../../Tooltip")
 
 [node name="UpgradeNode6" parent="UpgradeTree/Upgrades" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_0xduo")]
-position = Vector2(576, 529)
+position = Vector2(576, 501)
 upgrade_data = ExtResource("4_ot48j")
 tooltip = NodePath("../../Tooltip")
+
+[node name="nine_back_to_button" type="NinePatchRect" parent="UpgradeTree"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 277.0
+offset_right = 642.0
+offset_bottom = 320.0
+texture = ExtResource("13_4c3nq")
+region_rect = Rect2(1.82727, 1.24148, 162.811, 47.1172)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 20
+patch_margin_bottom = 9
+
+[node name="btn_interact" type="Button" parent="UpgradeTree/nine_back_to_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.137255, 0.145098, 0.145098, 1)
+theme_override_fonts/font = ExtResource("12_s88jq")
+theme_override_font_sizes/font_size = 16
+text = "Continue boot..."
+flat = true
 
 [node name="Tooltip" parent="UpgradeTree" instance=ExtResource("10_wmqia")]
 visible = false
@@ -135,31 +161,6 @@ theme_override_fonts/font = ExtResource("12_s88jq")
 theme_override_font_sizes/font_size = 28
 text = "/infinit/bar: 0"
 
-[node name="nine_back_to_button" type="NinePatchRect" parent="Control/Panel"]
-layout_mode = 0
-offset_left = 510.0
-offset_top = 302.0
-offset_right = 642.0
-offset_bottom = 345.0
-texture = ExtResource("13_4c3nq")
-region_rect = Rect2(1.82727, 1.24148, 162.811, 47.1172)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 20
-patch_margin_bottom = 9
-
-[node name="btn_interact" type="Button" parent="Control/Panel/nine_back_to_button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.137255, 0.145098, 0.145098, 1)
-theme_override_fonts/font = ExtResource("12_s88jq")
-theme_override_font_sizes/font_size = 16
-text = "Continue boot..."
-flat = true
-
 [node name="shader_layer" parent="." instance=ExtResource("14_187rw")]
 layout_mode = 1
+metadata/_edit_lock_ = true

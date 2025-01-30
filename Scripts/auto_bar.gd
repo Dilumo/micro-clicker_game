@@ -80,7 +80,7 @@ func set_ui_data() -> void:
 	update_relativs_infos()
 	
 func update_relativs_infos() -> void:
-	info_label.text = "bar/give : " + str(current_points) + "............................bar/progress/speed: "+ str(current_speed)
+	info_label.text = "bar/give : " + str(current_points) + "............................bar/progress/speed: " + str("%.2f sec." % current_speed)
 	cost_label.text = "bar/cost: " + str(current_cost)
 
 # Loop function to change subdescription
@@ -113,7 +113,7 @@ func _process(delta):
 
 func _on_upgrade_pressed():
 	if global.points_bar >= current_cost:  # Verifica se o jogador tem pontos suficientes
-		emit_signal("buy_upgrade", current_cost)
+		global.decrement_points(current_cost)
 		current_cost = int(current_cost * increment_cust)  # Incrementa custo progressivamente
 		current_speed *= autobar_data.speed_increase  # Aumenta a velocidade
 		current_points += autobar_data.points_increase  # Adiciona pontos por ciclo
