@@ -13,7 +13,7 @@ func apply_effect(effect_type: String, effect_value: float, bar : Resource = nul
 			global.resetable_stats["main_bar_points_bonus"] += int(effect_value)
 			main_bar_update.emit()
 		"permanent_main_bar_speed":
-			global.permanent_upgrades["main_bar_speed_base"] = effect_value
+			global.permanent_upgrades["main_bar_speed_base"] += effect_value
 		"permanent_main_bar_points":
 			global.permanent_upgrades["main_bar_points_base"] += int(effect_value)
 		"permanent_critical_hit":

@@ -77,6 +77,7 @@ offset_bottom = 60.0
 color = Color(0.321569, 0.529412, 0.439216, 1)
 
 [node name="upgrade_name" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_right = 124.0
 offset_bottom = 17.0
 theme_override_colors/font_color = Color(0.117647, 0.0784314, 0.0901961, 1)
@@ -90,6 +91,7 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="upgrade_cost" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 124.0
 offset_bottom = 34.0

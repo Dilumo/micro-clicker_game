@@ -13,7 +13,7 @@ extends Control
 
 func _ready():
 	# Play music
-	audio_music.play()
+	#audio_music.play()
 	popup_main_bar.bar_full.connect(add_point_bar)
 	upgrade_control.new_bar.connect(connect_new_bar)
 	upgrade_control.upgrade_purchased.connect(_update_ui)
