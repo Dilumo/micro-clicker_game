@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResetUpgradeData" load_steps=4 format=3 uid="uid://d0qacjox4byw1"]
 
-[ext_resource type="Texture2D" uid="uid://cnphy7rxp0u2" path="res://Assets/Sprites/rest_upgrades/upgrades/turn_on_conscience.png" id="1_mnbdm"]
+[ext_resource type="Texture2D" uid="uid://e4fl1ovh381y" path="res://Assets/Sprites/rest_upgrades/upgrades/passive_income_mode.png" id="1_o15tg"]
 [ext_resource type="Script" path="res://Scripts/reset_upgrade_data.gd" id="2_2j51k"]
 [ext_resource type="Resource" uid="uid://bqt25xvhwypvo" path="res://Data/reset_upgrades/pay_yourself_first.tres" id="3_3l0qd"]
 
@@ -9,7 +9,7 @@ script = ExtResource("2_2j51k")
 name = "Passive Income Mode"
 description = "Your money works for you."
 cost = 15000
-icon = ExtResource("1_mnbdm")
+icon = ExtResource("1_o15tg")
 prerequisites = Array[ExtResource("2_2j51k")]([ExtResource("3_3l0qd")])
 effects = Array[Dictionary]([{
 "type": "permanent_main_bar_points",

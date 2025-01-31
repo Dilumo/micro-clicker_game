@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResetUpgradeData" load_steps=4 format=3 uid="uid://cp5rylo08tke1"]
 
-[ext_resource type="Texture2D" uid="uid://cnphy7rxp0u2" path="res://Assets/Sprites/rest_upgrades/upgrades/turn_on_conscience.png" id="1_y8b0u"]
+[ext_resource type="Texture2D" uid="uid://cof42ioycjatj" path="res://Assets/Sprites/rest_upgrades/upgrades/no_more.png" id="1_t2j26"]
 [ext_resource type="Script" path="res://Scripts/reset_upgrade_data.gd" id="2_88qq3"]
 [ext_resource type="Resource" uid="uid://sofvywxf1toi" path="res://Data/reset_upgrades/side_hustle_activated.tres" id="3_nbmer"]
 
@@ -9,7 +9,7 @@ script = ExtResource("2_88qq3")
 name = "No More 9 to 5"
 description = "You're done with the rat race!"
 cost = 10000
-icon = ExtResource("1_y8b0u")
+icon = ExtResource("1_t2j26")
 prerequisites = Array[ExtResource("2_88qq3")]([ExtResource("3_nbmer")])
 effects = Array[Dictionary]([{
 "type": "permanent_main_bar_speed",

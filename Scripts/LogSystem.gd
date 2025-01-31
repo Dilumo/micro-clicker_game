@@ -37,7 +37,8 @@ func add_message(sender: String, message: String, message_type: String) -> void:
 		var tween = create_tween()
 		tween.tween_property(message_instance, "modulate:a", 1, 0.5)
 		
-		system_song.play()
+		if message_type != "boss":
+			system_song.play()
 	
 		# Adiciona a nova mensagem ao container no início (topo)
 		log_container.call_deferred("add_child", message_instance)

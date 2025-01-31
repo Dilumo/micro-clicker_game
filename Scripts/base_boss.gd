@@ -22,10 +22,9 @@ var initial_eye_position: Vector2  # Posição inicial do olho
 var initial_iris_position: Vector2  # Posição inicial da íris
 
 func _ready():
-	# Salva as posições iniciais do olho e da íris
+	randomize()  # Define uma semente aleatória para o gerador de números
 	initial_eye_position = eye_base.global_position
 	initial_iris_position = iris.global_position
-	# Define o primeiro tempo de pausa aleatório
 	next_pause_time = randf_range(stop_interval_min, stop_interval_max)
 
 func _process(delta):
@@ -78,8 +77,10 @@ func trigger_pause():
 
 	# Envia a notificação com uma mensagem aleatória (se houver mensagens configuradas)
 	if messages.size() > 0:
-		var message = messages[randi() % messages.size()]
+		var index = randi_range(0, messages.size() - 1)
+		var message = messages[index]
 		NotificationSystem.notify("The Boss", message, "boss")
+		
 
 	# Espera um tempo e volta ao normal
 	await get_tree().create_timer(shake_duration + 0.5).timeout
