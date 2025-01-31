@@ -38,7 +38,7 @@ func _unhandled_input(event):
 
 func transition_to_gameplay():
 	# Troca para a cena de gameplay
-	GameManagement.go_to_scene("res://scenes/gameplay.tscn")
+	GameManagement.go_to_scene("res://Scenes/gameplay.tscn")
 	
 func _on_open_message_ballon():
 	#ballon_message.rect_position = Vector2(50, 50)  # Ajuste a posição conforme necessário

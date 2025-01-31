@@ -43,4 +43,4 @@ func connect_new_bar(bar):
 	bar.buy_upgrade.connect(sub_point_bar)
 	
 func go_to_reset_scene():
-	GameManagement.go_to_scene("res://scenes/reset_upgrad_scene.tscn")
+	GameManagement.go_to_scene("res://Scenes/reset_upgrad_scene.tscn")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://6meolr3v6sn4"]
 
-[ext_resource type="Script" path="res://scripts/upgrade_tree.gd" id="1_00veg"]
+[ext_resource type="Script" path="res://Scripts/upgrade_tree.gd" id="1_00veg"]
 [ext_resource type="Script" path="res://Scripts/reset_upgrad_scene.gd" id="1_vinqa"]
 [ext_resource type="Texture2D" uid="uid://dpbcaapnbxpu7" path="res://Assets/Sprites/background_02.png" id="2_i334i"]
 [ext_resource type="PackedScene" uid="uid://cb4v1kmtrtec4" path="res://Scenes/upgrade_node.tscn" id="3_0xduo"]

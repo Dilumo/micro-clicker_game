@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_a4qtk")
-file_path = "res://Data/auto_bar/equality_bar.tres"
-bar_name = "Cosmic Equality"
-bar_descripiton = "It represents balance (or lack thereof) in the universe."
-sub_descriptions = Array[String](["The fuller it is, the more uneven the cosmos becomes. Funny, isn't it?", "Universal equity is like unicorns: beautiful in theory, but never seen.", "Click... I mean, watch as the bar insists on not changing anything."])
+key = "privilegiometer_bar"
+bar_name = "Galactic Privilegiometer"
+bar_descripiton = "A cosmic thermometer of the uneven distribution of everything."
+sub_descriptions = Array[String](["The fuller it gets, the more you realize that not all galaxies shine equally.", "The bar doesn't lie: some have stars, others have black holes.", "Stellar privilege is measured in light years. And you are miles away from that."])
 base_speed = 5.0
 points_per_cycle = 1
 upgrade_cost = 25

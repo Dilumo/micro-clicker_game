@@ -65,7 +65,7 @@ func update_resetable_state():
 		global.resetable_stats["auto_bars"] = {}
 
 	var updated_data = {
-		"file_path": autobar_data.file_path,
+		"key": autobar_data.key,
 		"bar_name": autobar_data.bar_name,
 		"base_speed": current_speed,
 		"points_per_cycle": current_points,

@@ -8,7 +8,7 @@ signal reset_points_changed
 signal game_loaded
 signal game_saved
 var save_file_path = "user://save_data.json"
-var save_timer : int = 1 # Save in minutes
+var save_timer : int = 10 # Save in minutes
 
 # Estatísticas resetáveis (valores que voltam ao padrão após um reset)
 var resetable_stats := {

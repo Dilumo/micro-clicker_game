@@ -5,7 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://b33kwg6tjto60" path="res://Assets/Fonts/label_settings/titles.tres" id="3_gbrr4"]
 [ext_resource type="Texture2D" uid="uid://yjywn6wt1sjg" path="res://Assets/Sprites/the_boss/base.png" id="4_k0gsf"]
 [ext_resource type="Texture2D" uid="uid://ctqla7ldxkv1f" path="res://Assets/Sprites/the_boss/eye_ball.png" id="5_5kgme"]
-[ext_resource type="Script" path="res://scripts/base_boss.gd" id="5_br014"]
+[ext_resource type="Script" path="res://Scripts/base_boss.gd" id="5_uvf53"]
 [ext_resource type="AudioStream" uid="uid://5h0rwmvlhvvn" path="res://Assets/Sounds/the_boss/tectecturin.wav" id="7_ahu8p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67iow"]
@@ -90,10 +90,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_k0gsf")
 expand_mode = 1
-script = ExtResource("5_br014")
+script = ExtResource("5_uvf53")
 eye_base = NodePath(".")
 iris = NodePath("eye_ball")
-iris_range = 15.0
 stop_interval_min = 30.0
 stop_interval_max = 300.0
 sound = NodePath("../../../../talking")

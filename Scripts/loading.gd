@@ -1,7 +1,7 @@
 extends Control
 
 @export var save_file_path : String = "user://save_data.json"  # Caminho do arquivo de save
-@export var gameplay_scene_path : String = "res://scenes/gameplay.tscn"  # Cena do gameplay
+@export var gameplay_scene_path : String = "res://Scenes/gameplay.tscn"  # Cena do gameplay
 @export var loading_commands : Array = [  # Comandos fictícios para exibição
 	"Loading Universal Operating System...",
 	"Initializing Quantum Processes...",

@@ -18,7 +18,7 @@ func upgrade_purchased() -> void:
 
 func _continue_button_cliked() -> void:
 	global.reboot_resets()
-	GameManagement.go_to_scene("res://scenes/gameplay.tscn")
+	GameManagement.go_to_scene("res://Scenes/gameplay.tscn")
 	
 func call_endgame() -> void:
-	GameManagement.go_to_scene("res://scenes/endgame.tscn")
+	GameManagement.go_to_scene("res://Scenes/endgame.tscn")

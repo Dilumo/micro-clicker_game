@@ -2,7 +2,7 @@ extends Resource
 
 class_name AutoBarData
 
-@export var file_path : String # Caminho do arquivo
+@export var key : String # Chave para carregar barra
 @export var bar_name : String = "how is there?" # Nome da barra
 @export var bar_descripiton : String = "what do you do?" # Descrição da barra
 @export var sub_descriptions : Array[String]

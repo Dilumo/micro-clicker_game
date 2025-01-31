@@ -13,6 +13,12 @@ signal upgrade_purchased
 
 @export var upgrades_resource: Resource  # Aponta para upgrades.tres
 
+var auto_bar_resources := {
+	"equality_bar": preload("res://Data/auto_bar/equality_bar.tres"),
+	"degradation_bar": preload("res://Data/auto_bar/degradation_bar.tres"),
+	"privilegiometer_bar": preload("res://Data/auto_bar/privilegiometer_bar.tres")
+}
+
 var upgrades_data = []
 var active_upgrades = []  # Upgrades disponíveis
 
@@ -151,28 +157,28 @@ func restore_auto_bars():
 	# Restaura todas as barras salvas em `resetable_stats`
 	for bar_name in global.resetable_stats.get("auto_bars", {}):
 		var bar_data_dict = global.resetable_stats["auto_bars"][bar_name]
-		
-		# Carrega o recurso fixo original associado ao file_path
-		var file_path = bar_data_dict.get("file_path", null)
-		if not file_path or not FileAccess.file_exists(file_path):
-			print("File path is invalid or missing for bar: ", bar_name)
+
+		var key_bar = bar_data_dict.get("key", null)
+		# Busca no dicionário de resources
+		if not auto_bar_resources.has(key_bar):
+			print("Bar resource not found: ", bar_name)
 			continue
 
-		var bar_data = load(file_path).duplicate() as AutoBarData
+		# Duplica o recurso para evitar modificar o original
+		var bar_data = auto_bar_resources[key_bar].duplicate() as AutoBarData
 		if bar_data == null:
-			print("Failed to load AutoBarData for bar: ", bar_name)
+			print("Failed to duplicate AutoBarData for bar: ", bar_name)
 			continue
-		
+
+		# Restaura os dados da barra
 		bar_data.bar_name = bar_data_dict.get("bar_name", "Unnamed Bar")
 		bar_data.base_speed = bar_data_dict.get("base_speed", 1.0)
 		bar_data.points_per_cycle = bar_data_dict.get("points_per_cycle", 1)
 		bar_data.upgrade_cost = bar_data_dict.get("upgrade_cost", 10)
 		bar_data.max_progress = bar_data_dict.get("max_progress", 100)
-		
-		# Chama spawn_new_bar com o objeto convertido
+
+		# Chama spawn_new_bar com o objeto atualizado
 		spawn_new_bar(bar_data)
-
-
 
 # Instancia uma nova barra automática
 func spawn_new_bar(data : AutoBarData):
@@ -185,7 +191,7 @@ func spawn_new_bar(data : AutoBarData):
 		global.resetable_stats["auto_bars"] = {}
 
 	global.resetable_stats["auto_bars"][data.bar_name] = {
-		"file_path" : data.file_path,
+		"key" : data.key,
 		"bar_name": data.bar_name,
 		"base_speed": data.base_speed,
 		"points_per_cycle": data.points_per_cycle,
